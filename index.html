@@ -5943,6 +5943,45 @@ body.bb-view-only .mini-action{
 .bb-vehicle-save-v14:disabled{opacity:.42;cursor:not-allowed;}
 </style>
 
+
+<style id="bb-v18-employment-colour-fix">
+/* V19 — employment type and occupancy are separate visual signals.
+   Full Time = green, Part Time = dark blue, Casual = brown role badge.
+   Vacancy can still use the open-position card background.
+   Role mismatch and outside-budget warnings retain priority. */
+#area-rocklea-fleet-team .role-card-v46.employment-part-time-v18:not(.role-mismatch):not(.outside-approved-budget) .role-code-v46{
+  background:#182E80 !important;
+  border-color:#182E80 !important;
+  color:#fff !important;
+}
+#area-rocklea-fleet-team .role-card-v46.employment-part-time-v18.type-open:not(.role-mismatch):not(.outside-approved-budget) .role-code-v46{
+  background:#182E80 !important;
+  border-color:#182E80 !important;
+  color:#fff !important;
+}
+/* Full Time = green role badge, including when the approved position is vacant. */
+#area-rocklea-fleet-team .role-card-v46.employment-full-time-v18:not(.role-mismatch):not(.outside-approved-budget) .role-code-v46{
+  background:#43652A !important;
+  border-color:#43652A !important;
+  color:#fff !important;
+}
+#area-rocklea-fleet-team .role-card-v46.employment-full-time-v18.type-open:not(.role-mismatch):not(.outside-approved-budget) .role-code-v46{
+  background:#43652A !important;
+  border-color:#43652A !important;
+  color:#fff !important;
+}
+/* Casual = brown role badge, including when shown as an approved relief position. */
+#area-rocklea-fleet-team .role-card-v46.employment-casual-v18:not(.role-mismatch):not(.outside-approved-budget) .role-code-v46{
+  background:#8F4A10 !important;
+  border-color:#8F4A10 !important;
+  color:#fff !important;
+}
+/* Ensure the two backup add-role controls remain visible whenever editing is enabled. */
+body.bb-editor-enabled #area-rocklea-fleet-team #backupDriverSection .backup-add-role-btn,
+body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-add-role-btn{
+  display:inline-flex !important;
+}
+</style>
 </head>
 <body>
 <header>
@@ -7956,12 +7995,12 @@ body.bb-view-only .mini-action{
 <div class="org-legend">
 <div class="legend-top">
 <div class="legend-item">
-<div class="legend-chip type-full">1 FTE</div>
-<div class="legend-copy">Approved 1.0 full-time-equivalent position</div>
+<div class="legend-chip type-full">FULL<br/>TIME</div>
+<div class="legend-copy">Full Time employment type</div>
 </div>
 <div class="legend-item">
-<div class="legend-chip type-half">0.5 FTE</div>
-<div class="legend-copy">Approved 0.5 full-time-equivalent position</div>
+<div class="legend-chip type-half">PART<br/>TIME</div>
+<div class="legend-copy">Part Time employment type. Dark blue is used for Part Time roles in the org chart.</div>
 </div>
 <div class="legend-item">
 <div class="legend-chip type-casual">CASUAL<br/>RELIEF<br/>POOL</div>
@@ -8342,21 +8381,27 @@ body.bb-view-only .mini-action{
         fte.textContent = `${Number(d.approvedFTE ?? 0).toFixed(1)} FTE | ${d.approvedEmploymentType || '—'}`;
       }
 
-      card.classList.remove('type-full','type-half','type-casual','type-open');
+      card.classList.remove('type-full','type-half','type-casual','type-open','employment-part-time-v18','employment-full-time-v18','employment-casual-v18');
       const p = positionMeta(id) || {};
       const isAssigned = !!(a && String(a.personName || '').trim());
       const outsideBudget = isOutsideBudgetPositionV17(id,d.budgetStatus);
+      const employmentTypeV18 = String(d.approvedEmploymentType || p.employmentType || '').trim().toLowerCase();
+      const isPartTimeV18 = employmentTypeV18 === 'part time' || employmentTypeV18 === 'part-time';
+      const isCasualV18 = employmentTypeV18 === 'casual';
+      card.classList.toggle('employment-part-time-v18', isPartTimeV18);
+      card.classList.toggle('employment-full-time-v18', employmentTypeV18 === 'full time' || employmentTypeV18 === 'full-time');
+      card.classList.toggle('employment-casual-v18', isCasualV18);
       card.classList.toggle('outside-approved-budget',outsideBudget);
 
-      // Live assignment state takes priority over the static establishment styling.
-      // Any approved role with no person assigned must display as an open/vacant position.
+      // Occupancy/status controls the card treatment. Employment type is applied separately
+      // so a vacant Part Time role still carries the dark-blue Part Time badge.
       if(outsideBudget){
         card.classList.add('type-casual');
       }else if(!isAssigned){
         card.classList.add('type-open');
-      }else if(d.establishmentType === 'Cover' || String(d.approvedEmploymentType || '').toLowerCase() === 'casual'){
+      }else if(d.establishmentType === 'Cover' || isCasualV18){
         card.classList.add('type-casual');
-      }else if(Number(d.approvedFTE) > 0 && Number(d.approvedFTE) < 1){
+      }else if(isPartTimeV18){
         card.classList.add('type-half');
       }else{
         card.classList.add('type-full');
@@ -10710,6 +10755,16 @@ window.BB_MANAGEMENT_COLOUR_RULE = 'green-only-when-valid-assigned';
   };
 
   async function loadAccess() {
+    const host = String(location.hostname || '').toLowerCase();
+    const isAzure = host.endsWith('.azurestaticapps.net');
+
+    // Standalone/sandbox preview: enable the editor immediately so all controls,
+    // including Back Up Driver / Back Up Offsider additional-role buttons, are testable.
+    if (!isAzure) {
+      setAccessMode(true, null);
+      return;
+    }
+
     try {
       const res = await fetch('/.auth/me', {
         method: 'GET',
@@ -10731,8 +10786,6 @@ window.BB_MANAGEMENT_COLOUR_RULE = 'green-only-when-valid-assigned';
       console.warn('Editor access check failed:', err);
       // Allow editing when the standalone HTML is being previewed outside Azure.
       // On the deployed Azure Static Web App, access still requires Hazel's signed-in identity.
-      const host = String(location.hostname || '').toLowerCase();
-      const isAzure = host.endsWith('.azurestaticapps.net');
       setAccessMode(!isAzure, null);
     }
   }
