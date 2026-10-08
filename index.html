@@ -5622,6 +5622,327 @@ body.bb-view-only .mini-action{
 .quick-move-note-v11 strong{color:#006B3A;}
 .quick-move-note-v11 .drag-symbol-v11{font-size:16px;font-weight:800;color:#006B3A;}
 </style>
+
+<style id="bb-v12-balanced-fleet-layout">
+/* ============================================================
+   V12 — Balanced Rocklea Fleet layout
+   Reduce overall footprint without compressing the chart.
+   Keep every primary cluster and lower section visually equal.
+   ============================================================ */
+
+/* A narrower natural canvas allows Fit width to render the chart at a
+   larger, more readable scale instead of forcing the 3180px layout down. */
+#area-rocklea-fleet-team .fleet-canvas-v46{
+  width:2500px !important;
+  min-height:900px !important;
+  padding:18px 20px 28px !important;
+}
+
+/* Clusters A-D: four genuinely equal columns with tighter, consistent gaps. */
+#area-rocklea-fleet-team .fleet-cluster-grid-v46{
+  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+  gap:12px !important;
+  align-items:stretch !important;
+}
+
+#area-rocklea-fleet-team .fleet-cluster-grid-v46 > .fleet-cluster-v46{
+  width:100% !important;
+  min-width:0 !important;
+  align-self:stretch !important;
+}
+
+/* Every cluster header uses the same height and spacing. */
+#area-rocklea-fleet-team .fleet-cluster-v46 > .team-group-title-v46,
+#area-rocklea-fleet-team .fleet-lower-group-v46 > .team-group-title-v46{
+  min-height:38px !important;
+  height:38px !important;
+  padding:7px 38px !important;
+  font-size:11px !important;
+  line-height:1.15 !important;
+}
+
+/* Two equal vehicle columns inside A-D. This avoids wide clusters with
+   inconsistent auto-fit behaviour while keeping cards comfortably sized. */
+#area-rocklea-fleet-team .fleet-cluster-v46 > .vehicle-grid-v46{
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:8px !important;
+  padding:9px !important;
+}
+
+#area-rocklea-fleet-team .vehicle-group-v46{
+  min-width:0 !important;
+  width:100% !important;
+}
+
+#area-rocklea-fleet-team .vehicle-title-v46{
+  min-height:28px !important;
+  padding:5px 7px !important;
+  font-size:9px !important;
+}
+
+#area-rocklea-fleet-team .vehicle-card-stack-v46{
+  min-width:0 !important;
+  gap:7px !important;
+  padding:7px !important;
+}
+
+/* Consistent position-card footprint throughout the Rocklea Fleet chart. */
+#area-rocklea-fleet-team .role-card-v46{
+  width:240px !important;
+  min-width:240px !important;
+  max-width:240px !important;
+  min-height:126px !important;
+  padding:8px !important;
+  grid-template-columns:44px minmax(0,1fr) !important;
+  gap:8px !important;
+  justify-self:center !important;
+}
+
+#area-rocklea-fleet-team .role-code-v46{
+  width:44px !important;
+  min-width:44px !important;
+  max-width:44px !important;
+  height:44px !important;
+  min-height:44px !important;
+  font-size:12px !important;
+}
+
+/* Cluster E, Back Up Driver and Back Up Offsider now receive exactly one
+   third of the lower row each. */
+#area-rocklea-fleet-team .fleet-lower-grid-v46{
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:12px !important;
+  align-items:stretch !important;
+}
+
+#area-rocklea-fleet-team .fleet-lower-grid-v46 > .fleet-lower-group-v46{
+  width:100% !important;
+  min-width:0 !important;
+  align-self:stretch !important;
+}
+
+/* Four Cluster E vehicles become a balanced 2 x 2 grid rather than forcing
+   an oversized first lower section. */
+#area-rocklea-fleet-team .cluster-e-grid-v46{
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:8px !important;
+  padding:9px !important;
+}
+
+/* Backup pools use the same two-column card rhythm and card width. */
+#area-rocklea-fleet-team #backupDriverGrid,
+#area-rocklea-fleet-team #backupOffsiderGrid{
+  grid-template-columns:repeat(2,240px) !important;
+  gap:8px !important;
+  padding:10px !important;
+  justify-content:center !important;
+  align-content:start !important;
+}
+
+/* Keep the backup action controls compact within the slightly shorter header. */
+#area-rocklea-fleet-team .backup-add-role-btn{
+  top:5px !important;
+  right:40px !important;
+  padding:4px 9px !important;
+  min-height:22px !important;
+  font-size:9px !important;
+}
+
+/* Reduce connector-only whitespace slightly while preserving routing. */
+#area-rocklea-fleet-team .cluster-band-v46{
+  height:16px !important;
+}
+#area-rocklea-fleet-team .lower-fleet-band-v46{
+  height:52px !important;
+}
+</style>
+
+
+<style id="bb-v13-inline-vehicle-row-layout">
+/* ============================================================
+   V13 — Keep vehicle / number boxes on one horizontal row
+   within each Rocklea Fleet cluster.
+   ============================================================ */
+
+/* Clusters A-C each contain three vehicle groups: keep all three aligned. */
+#area-rocklea-fleet-team .fleet-cluster-grid-v46 > .fleet-cluster-v46:nth-child(1) > .vehicle-grid-v46,
+#area-rocklea-fleet-team .fleet-cluster-grid-v46 > .fleet-cluster-v46:nth-child(2) > .vehicle-grid-v46,
+#area-rocklea-fleet-team .fleet-cluster-grid-v46 > .fleet-cluster-v46:nth-child(3) > .vehicle-grid-v46{
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:8px !important;
+}
+
+/* Cluster D contains two vehicle groups and remains a balanced two-column row. */
+#area-rocklea-fleet-team .fleet-cluster-grid-v46 > .fleet-cluster-v46:nth-child(4) > .vehicle-grid-v46{
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:8px !important;
+}
+
+/* Cluster E contains four vehicle groups: keep all four number boxes aligned. */
+#area-rocklea-fleet-team .cluster-e-grid-v46{
+  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+  gap:8px !important;
+}
+
+/* Use a consistent compact card width inside vehicle clusters only.
+   Backup-driver/offside pools retain the larger V12 card footprint. */
+#area-rocklea-fleet-team .fleet-cluster-grid-v46 .vehicle-card-stack-v46 > .role-card-v46,
+#area-rocklea-fleet-team .cluster-e-grid-v46 .vehicle-card-stack-v46 > .role-card-v46{
+  width:185px !important;
+  min-width:185px !important;
+  max-width:185px !important;
+  min-height:122px !important;
+  grid-template-columns:40px minmax(0,1fr) !important;
+  gap:7px !important;
+  padding:8px !important;
+}
+
+#area-rocklea-fleet-team .fleet-cluster-grid-v46 .role-code-v46,
+#area-rocklea-fleet-team .cluster-e-grid-v46 .role-code-v46{
+  width:40px !important;
+  min-width:40px !important;
+  max-width:40px !important;
+  height:40px !important;
+  min-height:40px !important;
+  font-size:11px !important;
+}
+
+#area-rocklea-fleet-team .fleet-cluster-grid-v46 .role-title-v46,
+#area-rocklea-fleet-team .cluster-e-grid-v46 .role-title-v46{
+  font-size:11.5px !important;
+  line-height:1.18 !important;
+  margin-bottom:4px !important;
+}
+
+#area-rocklea-fleet-team .fleet-cluster-grid-v46 .role-location-v46,
+#area-rocklea-fleet-team .fleet-cluster-grid-v46 .role-fte-v46,
+#area-rocklea-fleet-team .fleet-cluster-grid-v46 .role-report-v46,
+#area-rocklea-fleet-team .cluster-e-grid-v46 .role-location-v46,
+#area-rocklea-fleet-team .cluster-e-grid-v46 .role-fte-v46,
+#area-rocklea-fleet-team .cluster-e-grid-v46 .role-report-v46{
+  font-size:9px !important;
+  line-height:1.22 !important;
+}
+
+/* Make each vehicle group fill its grid column equally so every number header
+   starts on the same baseline and has the same width. */
+#area-rocklea-fleet-team .fleet-cluster-grid-v46 .vehicle-group-v46,
+#area-rocklea-fleet-team .cluster-e-grid-v46 .vehicle-group-v46{
+  width:100% !important;
+  min-width:0 !important;
+  align-self:stretch !important;
+}
+
+#area-rocklea-fleet-team .fleet-cluster-grid-v46 .vehicle-title-v46,
+#area-rocklea-fleet-team .cluster-e-grid-v46 .vehicle-title-v46{
+  width:100% !important;
+  min-height:30px !important;
+  height:30px !important;
+  padding:5px 6px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+
+/* Keep the contents centred beneath each aligned number box. */
+#area-rocklea-fleet-team .fleet-cluster-grid-v46 .vehicle-card-stack-v46,
+#area-rocklea-fleet-team .cluster-e-grid-v46 .vehicle-card-stack-v46{
+  min-width:0 !important;
+  padding:7px 5px !important;
+  justify-items:center !important;
+}
+</style>
+
+
+<style id="bb-v14-truck-number-editor-css">
+#area-rocklea-fleet-team .vehicle-title-v46.vehicle-editable-v14{
+  position:relative !important;
+  gap:5px !important;
+  padding-left:28px !important;
+  padding-right:28px !important;
+}
+#area-rocklea-fleet-team .vehicle-label-text-v14{
+  display:block;
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  text-align:center;
+  font-weight:800;
+}
+#area-rocklea-fleet-team .vehicle-edit-btn-v14{
+  position:absolute;
+  right:5px;
+  top:50%;
+  transform:translateY(-50%);
+  border:1px solid rgba(255,255,255,.7);
+  background:rgba(255,255,255,.16);
+  color:#fff;
+  border-radius:5px;
+  padding:2px 5px;
+  font:700 8px/1.2 Arial,sans-serif;
+  letter-spacing:.35px;
+  cursor:pointer;
+}
+#area-rocklea-fleet-team .vehicle-edit-btn-v14:hover{
+  background:#fff;
+  color:#176638;
+}
+.bb-vehicle-modal-v14{
+  position:fixed;
+  inset:0;
+  z-index:10050;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:22px;
+  background:rgba(19,31,25,.52);
+}
+.bb-vehicle-modal-v14.open{display:flex;}
+.bb-vehicle-dialog-v14{
+  width:min(540px,96vw);
+  background:#fff;
+  border-radius:14px;
+  box-shadow:0 24px 70px rgba(0,0,0,.27);
+  overflow:hidden;
+}
+.bb-vehicle-dialog-head-v14{
+  background:#176638;
+  color:#fff;
+  padding:16px 20px;
+}
+.bb-vehicle-dialog-head-v14 h3{margin:0;font-size:17px;line-height:1.2;}
+.bb-vehicle-dialog-body-v14{padding:20px;}
+.bb-vehicle-field-v14 label{display:block;font-weight:800;font-size:12px;margin-bottom:7px;color:#24352c;}
+.bb-vehicle-field-v14 input[type="text"]{
+  width:100%;box-sizing:border-box;border:1px solid #b9c6be;border-radius:8px;
+  padding:10px 12px;font-size:14px;outline:none;
+}
+.bb-vehicle-field-v14 input[type="text"]:focus{border-color:#176638;box-shadow:0 0 0 3px rgba(23,102,56,.10);}
+.bb-vehicle-warning-v14{
+  margin-top:14px;
+  padding:12px 13px;
+  border:1px solid #d0a63d;
+  border-left:5px solid #a97808;
+  border-radius:8px;
+  background:#fff8e5;
+  color:#4d3b12;
+  font-size:12px;
+  line-height:1.45;
+}
+.bb-vehicle-ack-v14{
+  display:flex;gap:9px;align-items:flex-start;margin-top:14px;padding:11px 12px;
+  border-radius:8px;background:#f5f7f5;font-size:12px;line-height:1.4;color:#26352d;
+}
+.bb-vehicle-ack-v14 input{margin-top:2px;}
+.bb-vehicle-error-v14{min-height:18px;margin-top:8px;color:#b52f2a;font-size:11px;font-weight:700;}
+.bb-vehicle-actions-v14{display:flex;justify-content:flex-end;gap:9px;margin-top:17px;}
+.bb-vehicle-actions-v14 button{border-radius:7px;padding:8px 13px;font-weight:800;font-size:11px;cursor:pointer;}
+.bb-vehicle-cancel-v14{background:#fff;border:1px solid #aeb9b2;color:#33443a;}
+.bb-vehicle-save-v14{background:#176638;border:1px solid #176638;color:#fff;}
+.bb-vehicle-save-v14:disabled{opacity:.42;cursor:not-allowed;}
+</style>
+
 </head>
 <body>
 <header>
@@ -7823,12 +8144,12 @@ body.bb-view-only .mini-action{
   const ROCKLEA_DPM_ID = 'POS-036';
   const ROCKLEA_DPM_LABEL = 'Delivery Performance Manager';
   const SEED_ROLE_DETAILS = {"POS-001": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-002": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-003": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-004": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-005": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-006": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-007": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-008": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-009": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-010": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-011": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-012": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-013": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-014": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-015": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-016": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-017": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-018": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-019": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-020": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-021": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-022": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-023": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-024": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-025": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-026": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-027": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-028": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-029": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-030": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-031": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-032": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-033": {"approvedFTE": 1.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-034": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-035": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-036": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-037": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-038": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-039": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-040": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-041": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-042": {"approvedFTE": 0.5, "establishmentType": "Standard", "approvedEmploymentType": "Part Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-043": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-044": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-045": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-046": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-047": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-048": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-049": {"approvedFTE": 0.5, "establishmentType": "Standard", "approvedEmploymentType": "Part Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-050": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-051": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-052": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-053": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-054": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-055": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-056": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-057": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-058": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-059": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-060": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-061": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-062": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-063": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-064": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-065": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-066": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-067": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-068": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-069": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-070": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-071": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-072": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-073": {"approvedFTE": 0.5, "establishmentType": "Standard", "approvedEmploymentType": "Part Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-074": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-075": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-076": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-077": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-078": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-079": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-080": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-081": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-082": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-083": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-084": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-085": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-086": {"approvedFTE": 0.5, "establishmentType": "Standard", "approvedEmploymentType": "Part Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-087": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-088": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-089": {"approvedFTE": 0.5, "establishmentType": "Standard", "approvedEmploymentType": "Part Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-090": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-091": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-092": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-093": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-094": {"approvedFTE": 0.5, "establishmentType": "Standard", "approvedEmploymentType": "Part Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-095": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-096": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-097": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-098": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-099": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-100": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-101": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-102": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-103": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-104": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-105": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-106": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-107": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-108": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-109": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-110": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-111": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-112": {"approvedFTE": 0.5, "establishmentType": "Standard", "approvedEmploymentType": "Part Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-113": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-114": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-115": {"approvedFTE": 0.5, "establishmentType": "Standard", "approvedEmploymentType": "Part Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-116": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-117": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-118": {"approvedFTE": 0.5, "establishmentType": "Standard", "approvedEmploymentType": "Part Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-119": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-120": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-121": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-122": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-123": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-124": {"approvedFTE": 0.5, "establishmentType": "Standard", "approvedEmploymentType": "Part Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-125": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-126": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-127": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-128": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-129": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-130": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-131": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-132": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-133": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-134": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-135": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-136": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-137": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-138": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-139": {"approvedFTE": 0.5, "establishmentType": "Standard", "approvedEmploymentType": "Part Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-140": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}};
-  const DEFAULT_STATE = { assignments: {}, requests: [], roleDetails: {}, history: {} };
+  const DEFAULT_STATE = { assignments: {}, requests: [], roleDetails: {}, history: {}, vehicleLabels: {}, addedVehicles: [], vehicleChanges: [], addedTruckPositions: [] };
 
   function loadState() {
     try {
       const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-      return {assignments:saved.assignments || {}, requests:saved.requests || [], roleDetails:saved.roleDetails || {}, history:saved.history || {}};
+      return {assignments:saved.assignments || {}, requests:saved.requests || [], roleDetails:saved.roleDetails || {}, history:saved.history || {}, vehicleLabels:saved.vehicleLabels || {}, addedVehicles:saved.addedVehicles || [], vehicleChanges:saved.vehicleChanges || [], addedTruckPositions:saved.addedTruckPositions || []};
     } catch (e) {
       return JSON.parse(JSON.stringify(DEFAULT_STATE));
     }
@@ -7836,15 +8157,29 @@ body.bb-view-only .mini-action{
   let state = loadState();
   state.roleDetails = state.roleDetails || {};
   state.history = state.history || {};
+  state.vehicleLabels = state.vehicleLabels || {};
+  state.addedVehicles = state.addedVehicles || [];
+  state.vehicleChanges = state.vehicleChanges || [];
+  state.addedTruckPositions = state.addedTruckPositions || [];
   Object.entries(SEED_ROLE_DETAILS).forEach(([id, seed]) => {
     if(!state.roleDetails[id]) state.roleDetails[id] = {...seed};
   });
-  const saveState = () => { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) { /* in-memory state remains available */ } };
+  const saveState = () => { try {
+    // V15 truck records can be written by the truck-control module. Merge them
+    // before every existing chart save so assignment edits never erase them.
+    const persisted = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    if (Array.isArray(persisted.addedVehicles)) state.addedVehicles = persisted.addedVehicles;
+    if (Array.isArray(persisted.vehicleChanges)) state.vehicleChanges = persisted.vehicleChanges;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (e) { /* in-memory state remains available */ } };
 
   function generateRockleaFleetPositionId(){
     const used = new Set(Object.keys(POSITIONS));
     state.requests.forEach(r=>{
       if(r && r.generatedPositionId) used.add(String(r.generatedPositionId));
+    });
+    (state.addedTruckPositions || []).forEach(r=>{
+      if(r && r.positionId) used.add(String(r.positionId));
     });
     let n=1;
     let id='';
@@ -7895,11 +8230,29 @@ body.bb-view-only .mini-action{
   function dynamicRequestFor(positionId){
     return state.requests.find(r => r.generatedPositionId === positionId && r.addedToChart) || null;
   }
+  function truckPositionFor(positionId){
+    return (state.addedTruckPositions || []).find(r => r && r.positionId === positionId && r.active !== false) || null;
+  }
+  function dynamicPositionRecordFor(positionId){
+    return dynamicRequestFor(positionId) || truckPositionFor(positionId) || null;
+  }
+  function roleCodeForV17(title){
+    const family=normalizeRoleFamily(title);
+    if(family==='offsider') return 'O';
+    if(family==='driver trainer') return 'DT';
+    if(family==='driver') return 'TD';
+    return String(title||'R').split(/\s+/).filter(Boolean).map(x=>x[0]).join('').slice(0,3).toUpperCase() || 'R';
+  }
+  function isOutsideBudgetPositionV17(positionId, explicitBudget=''){
+    if(dynamicRequestFor(positionId)) return true;
+    const b=String(explicitBudget || (state.roleDetails[positionId]||{}).budgetStatus || (truckPositionFor(positionId)||{}).budgetStatus || '').toLowerCase();
+    return b.includes('outside approved');
+  }
   function positionMeta(positionId){
     const p = POSITIONS[positionId];
     if(p) return p;
     const r = dynamicRequestFor(positionId);
-    return r ? {
+    if(r) return {
       id:r.generatedPositionId,
       title:r.roleTitle,
       code:r.backupGroup==='offsider' ? 'O' : 'TD',
@@ -7911,6 +8264,23 @@ body.bb-view-only .mini-action{
       employmentType:(state.roleDetails[positionId]||{}).approvedEmploymentType || 'Full Time',
       positionStatus:'Active - Filled',
       budgetStatus:'Outside Approved FTE'
+    };
+    const t=truckPositionFor(positionId);
+    return t ? {
+      id:t.positionId,
+      title:t.roleTitle,
+      code:t.positionCode || roleCodeForV17(t.roleTitle),
+      area:'Rocklea Fleet Team',
+      department:'Operations',
+      location:'Rocklea',
+      parentId:ROCKLEA_DPM_ID,
+      fte:Number((state.roleDetails[positionId]||{}).approvedFTE ?? t.approvedFTE ?? 1),
+      employmentType:(state.roleDetails[positionId]||{}).approvedEmploymentType || t.approvedEmploymentType || 'Full Time',
+      positionStatus:(state.assignments[positionId]&&state.assignments[positionId].personName)?'Active - Filled':'Active - Vacant',
+      budgetStatus:(state.roleDetails[positionId]||{}).budgetStatus || t.budgetStatus || 'Approved Budgeted FTE',
+      teamCluster:t.cluster || '',
+      vehicleId:t.vehicleId || '',
+      truckNumber:t.truckNumber || ''
     } : null;
   }
   function managerLabel(positionId) {
@@ -7973,12 +8343,16 @@ body.bb-view-only .mini-action{
       }
 
       card.classList.remove('type-full','type-half','type-casual','type-open');
-      const p = POSITIONS[id] || {};
+      const p = positionMeta(id) || {};
       const isAssigned = !!(a && String(a.personName || '').trim());
+      const outsideBudget = isOutsideBudgetPositionV17(id,d.budgetStatus);
+      card.classList.toggle('outside-approved-budget',outsideBudget);
 
       // Live assignment state takes priority over the static establishment styling.
       // Any approved role with no person assigned must display as an open/vacant position.
-      if(!isAssigned){
+      if(outsideBudget){
+        card.classList.add('type-casual');
+      }else if(!isAssigned){
         card.classList.add('type-open');
       }else if(d.establishmentType === 'Cover' || String(d.approvedEmploymentType || '').toLowerCase() === 'casual'){
         card.classList.add('type-casual');
@@ -8007,7 +8381,7 @@ body.bb-view-only .mini-action{
         if(d.budgetStatus === 'Outside Approved FTE'){
           const budget = document.createElement('span');
           budget.className = 'role-budget-v46';
-          budget.textContent = 'Outside Approved FTE';
+          budget.textContent = 'OUTSIDE APPROVED BUDGET';
           dynamic.appendChild(budget);
         }
 
@@ -8145,19 +8519,13 @@ body.bb-view-only .mini-action{
   }
 
   function openAssignment(positionId, dynamicRole) {
-    const p = dynamicRole || POSITIONS[positionId];
+    const p = dynamicRole || positionMeta(positionId);
     if (!p) return;
 
-    const additionalRole = !!dynamicRole || !!dynamicRequestFor(positionId);
-    const clearBtn = document.getElementById('clearAssignmentBtn');
-    if(clearBtn){
-      clearBtn.textContent = additionalRole ? 'Remove person & hide role' : 'Leave role vacant';
-      clearBtn.title = additionalRole
-        ? 'Outside-budget roles are hidden from the org chart when vacant. The role record and history remain in the data.'
-        : 'Approved budgeted positions remain visible on the org chart when vacant.';
-    }
+    const backupAdditionalRole = !!dynamicRequestFor(positionId);
+    const customTruckPosition = !!truckPositionFor(positionId);
     if(!state.roleDetails[positionId]){
-      state.roleDetails[positionId] = additionalRole ? {
+      state.roleDetails[positionId] = backupAdditionalRole ? {
         approvedFTE:1,
         establishmentType:'Standard',
         approvedEmploymentType:'Full Time',
@@ -8166,11 +8534,16 @@ body.bb-view-only .mini-action{
         labourHireProvider:''
       } : {...roleDetailsFor(positionId)};
     }
-    if(additionalRole){
-      state.roleDetails[positionId].budgetStatus = 'Outside Approved FTE';
-    }
-
+    if(backupAdditionalRole) state.roleDetails[positionId].budgetStatus = 'Outside Approved FTE';
     const d = roleDetailsFor(positionId);
+    const outsideBudget = isOutsideBudgetPositionV17(positionId,d.budgetStatus);
+    const clearBtn = document.getElementById('clearAssignmentBtn');
+    if(clearBtn){
+      clearBtn.textContent = outsideBudget ? 'Remove person & hide role' : 'Leave role vacant';
+      clearBtn.title = outsideBudget
+        ? 'Outside-budget roles are hidden from the org chart when vacant. The role record and history remain in the data.'
+        : 'Approved budgeted positions remain visible on the org chart when vacant.';
+    }
     document.getElementById('assignmentPositionId').value = positionId;
     document.getElementById('assignmentModalTitle').textContent = p.title;
     const reportsTo = (p.area === 'Rocklea Fleet Team' && p.id !== ROCKLEA_DPM_ID)
@@ -8186,7 +8559,7 @@ body.bb-view-only .mini-action{
       `<strong>${escapeHtml(p.id)}</strong> · ${escapeHtml(p.department || '—')} · ${escapeHtml(p.area || '—')}<br>` +
       `Reports to: <strong>${escapeHtml(reportsTo)}</strong><br>` +
       `Current workforce type: <strong>${escapeHtml(workerLabel)}</strong>` +
-      (additionalRole ? `<br><strong style="color:#7A5A00">OUTSIDE APPROVED BUDGET</strong>` : '');
+      (outsideBudget ? `<br><strong style="color:#7A5A00">OUTSIDE APPROVED BUDGET</strong>` : '');
 
     document.getElementById('assignmentPersonName').value = current.personName || '';
     document.getElementById('assignmentEmployeeId').value = current.employeeId || '';
@@ -8197,9 +8570,9 @@ body.bb-view-only .mini-action{
     document.getElementById('assignmentEstablishmentType').value = d.establishmentType || 'Standard';
     document.getElementById('assignmentEmploymentType').value = d.approvedEmploymentType || 'Full Time';
     const budgetSelect = document.getElementById('assignmentBudgetStatus');
-    budgetSelect.value = additionalRole ? 'Outside Approved FTE' : (d.budgetStatus || 'Approved Budgeted FTE');
-    budgetSelect.disabled = additionalRole;
-    budgetSelect.title = additionalRole ? 'Additional roles remain outside approved budget until formally approved into establishment.' : '';
+    budgetSelect.value = backupAdditionalRole ? 'Outside Approved FTE' : (d.budgetStatus || 'Approved Budgeted FTE');
+    budgetSelect.disabled = backupAdditionalRole;
+    budgetSelect.title = backupAdditionalRole ? 'Backup additional roles remain outside approved budget until formally approved into establishment.' : (customTruckPosition ? 'Budget status controls whether this custom truck position remains visible when vacant.' : '');
     document.getElementById('assignmentLabourHire').value = d.labourHire || 'No';
     document.getElementById('assignmentLabourHireProvider').value = d.labourHireProvider || '';
     updateLabourHireProviderVisibility();
@@ -8243,8 +8616,10 @@ body.bb-view-only .mini-action{
     const approvedFTE = Number(document.getElementById('assignmentApprovedFTE').value);
     const establishmentType = document.getElementById('assignmentEstablishmentType').value;
     const approvedEmploymentType = document.getElementById('assignmentEmploymentType').value;
-    const additionalRole = !!dynamicRequestFor(id);
-    const budgetStatus = additionalRole ? 'Outside Approved FTE' : document.getElementById('assignmentBudgetStatus').value;
+    const backupAdditionalRole = !!dynamicRequestFor(id);
+    const customTruckPosition = truckPositionFor(id);
+    const budgetStatus = backupAdditionalRole ? 'Outside Approved FTE' : document.getElementById('assignmentBudgetStatus').value;
+    const outsideBudget = isOutsideBudgetPositionV17(id,budgetStatus);
     const labourHire = document.getElementById('assignmentLabourHire').value;
     const labourHireProvider = document.getElementById('assignmentLabourHireProvider').value;
 
@@ -8289,7 +8664,7 @@ body.bb-view-only .mini-action{
           LabourHireWorkerName: labourHire === 'Yes' ? personName : null,
           Status:'Active',
           ChartVisible:true,
-          BudgetStatus: additionalRole ? 'Outside Approved FTE' : budgetStatus
+          BudgetStatus: budgetStatus
         });
       }
     }catch(err){
@@ -8316,13 +8691,19 @@ body.bb-view-only .mini-action{
       updatedAt:new Date().toISOString()
     };
 
-    if(additionalRole){
-      const req = dynamicRequestFor(id);
-      if(req){
-        req.chartStatus = 'Visible - Assigned';
-        req.chartVisible = true;
-        req.lastAssignedAt = new Date().toISOString();
-        req.hiddenFromChartAt = null;
+    const dynamicRecord = dynamicPositionRecordFor(id);
+    if(dynamicRecord){
+      dynamicRecord.chartStatus = 'Visible - Assigned';
+      dynamicRecord.chartVisible = true;
+      dynamicRecord.lastAssignedAt = new Date().toISOString();
+      dynamicRecord.hiddenFromChartAt = null;
+      dynamicRecord.hasEverBeenAssigned = true;
+      dynamicRecord.updatedAt = new Date().toISOString();
+      if(customTruckPosition){
+        customTruckPosition.budgetStatus=budgetStatus;
+        customTruckPosition.approvedFTE=approvedFTE;
+        customTruckPosition.establishmentType=establishmentType;
+        customTruckPosition.approvedEmploymentType=approvedEmploymentType;
       }
     }
 
@@ -8362,6 +8743,7 @@ body.bb-view-only .mini-action{
     saveState();
     refreshRoleCards();
     renderAdditionalRoles();
+    if(window.BB_RENDER_ADDED_TRUCKS_V15) window.BB_RENDER_ADDED_TRUCKS_V15();
     closeModal('assignmentModal');
     toast(roleMismatch ? 'Assignment saved and flagged red for role mismatch.' : (personName ? 'Position and person assignment saved.' : 'Position saved and role left vacant.'));
   });
@@ -8370,7 +8752,8 @@ body.bb-view-only .mini-action{
     const id = document.getElementById('assignmentPositionId').value;
     const previous = state.assignments[id];
     const d = roleDetailsFor(id);
-    const additionalRole = !!dynamicRequestFor(id);
+    const dynamicRecord = dynamicPositionRecordFor(id);
+    const outsideBudget = isOutsideBudgetPositionV17(id,d.budgetStatus);
 
     try{
       if(window.BB_MS_LIST){
@@ -8383,9 +8766,9 @@ body.bb-view-only .mini-action{
           LabourHire:false,
           LabourHireProvider:null,
           LabourHireWorkerName:null,
-          Status: additionalRole ? 'Inactive - Vacant' : 'Vacant',
-          ChartVisible: !additionalRole,
-          BudgetStatus: additionalRole ? 'Outside Approved FTE' : (d.budgetStatus || 'Approved Budgeted FTE')
+          Status: outsideBudget ? 'Inactive - Vacant' : 'Vacant',
+          ChartVisible: !outsideBudget,
+          BudgetStatus: d.budgetStatus || 'Approved Budgeted FTE'
         });
       }
     }catch(err){
@@ -8395,20 +8778,20 @@ body.bb-view-only .mini-action{
 
     delete state.assignments[id];
 
-    const retainedRequest = additionalRole ? dynamicRequestFor(id) : null;
-    if(retainedRequest){
-      retainedRequest.chartStatus = 'Hidden - Vacant';
-      retainedRequest.chartVisible = false;
-      retainedRequest.hiddenFromChartAt = new Date().toISOString();
-      retainedRequest.lastAssignmentEndedAt = new Date().toISOString();
-      retainedRequest.dataRetentionStatus = 'Retained';
+    if(dynamicRecord){
+      dynamicRecord.chartStatus = outsideBudget ? 'Hidden - Vacant' : 'Visible - Vacant';
+      dynamicRecord.chartVisible = !outsideBudget;
+      dynamicRecord.hiddenFromChartAt = outsideBudget ? new Date().toISOString() : null;
+      dynamicRecord.lastAssignmentEndedAt = new Date().toISOString();
+      dynamicRecord.dataRetentionStatus = 'Retained';
+      dynamicRecord.updatedAt = new Date().toISOString();
     }
 
     if(!state.history[id]) state.history[id] = [];
     state.history[id].push({
       changedAt:new Date().toISOString(),
-      action: additionalRole ? 'Outside-budget role hidden from chart' : 'Role made vacant',
-      summary: additionalRole
+      action: outsideBudget ? 'Outside-budget role hidden from chart' : 'Role made vacant',
+      summary: outsideBudget
         ? (previous && previous.personName
             ? `Assignment ended: ${previous.personName}. Outside-budget role hidden from org chart; role record retained in data.`
             : 'Outside-budget role confirmed vacant and hidden from org chart; role record retained in data.')
@@ -8416,7 +8799,7 @@ body.bb-view-only .mini-action{
       snapshot:{
         assignment:null,
         roleDetails:{...d},
-        chartVisible: additionalRole ? false : true
+        chartVisible: outsideBudget ? false : true
       }
     });
 
@@ -8424,8 +8807,9 @@ body.bb-view-only .mini-action{
     refreshRoleCards();
     if(window.refreshApprovedSiteCardsV47) window.refreshApprovedSiteCardsV47();
     renderAdditionalRoles();
+    if(window.BB_RENDER_ADDED_TRUCKS_V15) window.BB_RENDER_ADDED_TRUCKS_V15();
     closeModal('assignmentModal');
-    toast(additionalRole
+    toast(outsideBudget
       ? 'Assignment ended. Outside-budget role hidden from chart; record retained in data.'
       : 'Assignment ended. Approved position remains on the chart as vacant.');
   });
@@ -8745,21 +9129,23 @@ body.bb-view-only .mini-action{
   }
 
   function syncOutsideBudgetVisibilityV11(id){
-    const req=dynamicRequestFor(id);
+    const req=dynamicPositionRecordFor(id);
     if(!req) return;
+    const outside=isOutsideBudgetPositionV17(id);
     const assigned=hasAssignedPersonV11(id);
-    req.outsideApprovedBudget=true;
     req.reportingManager=ROCKLEA_DPM_ID;
-    req.chartVisible=assigned;
-    req.chartStatus=assigned?'Visible - Assigned':'Hidden - Vacant';
+    req.chartVisible=outside ? assigned : true;
+    req.chartStatus=assigned?'Visible - Assigned':(outside?'Hidden - Vacant':'Visible - Vacant');
     if(assigned){
+      req.hasEverBeenAssigned=true;
       req.lastAssignedAt=new Date().toISOString();
       req.hiddenFromChartAt=null;
-    }else{
+    }else if(outside){
       req.hiddenFromChartAt=new Date().toISOString();
       req.lastAssignmentEndedAt=new Date().toISOString();
       req.dataRetentionStatus='Retained';
     }
+    req.updatedAt=new Date().toISOString();
   }
 
   function addDragHistoryV11(id, action, summary){
@@ -8771,7 +9157,7 @@ body.bb-view-only .mini-action{
       snapshot:{
         assignment:state.assignments[id] ? {...state.assignments[id]} : null,
         roleDetails:{...roleDetailsFor(id)},
-        chartVisible:dynamicRequestFor(id) ? !!dynamicRequestFor(id).chartVisible : true
+        chartVisible:dynamicPositionRecordFor(id) ? dynamicPositionRecordFor(id).chartVisible !== false : true
       }
     });
   }
@@ -8804,7 +9190,7 @@ body.bb-view-only .mini-action{
       addDragHistoryV11(sourceId,'People swapped by drag & drop',`${sourceName} moved to ${targetPos}; ${targetName} moved into ${sourcePos}.`);
       addDragHistoryV11(targetId,'People swapped by drag & drop',`${targetName} moved to ${sourcePos}; ${sourceName} moved into ${targetPos}.`);
     }else{
-      addDragHistoryV11(sourceId,'Person moved by drag & drop',`${sourceName} moved from ${sourcePos} to ${targetPos}. This position is now ${dynamicRequestFor(sourceId)?'hidden because it is outside approved budget and vacant':'vacant'}.`);
+      addDragHistoryV11(sourceId,'Person moved by drag & drop',`${sourceName} moved from ${sourcePos} to ${targetPos}. This position is now ${isOutsideBudgetPositionV17(sourceId)?'hidden because it is outside approved budget and vacant':'vacant'}.`);
       addDragHistoryV11(targetId,'Person moved by drag & drop',`${sourceName} moved into ${targetPos} from ${sourcePos}.`);
     }
 
@@ -8812,6 +9198,7 @@ body.bb-view-only .mini-action{
     refreshRoleCards();
     refreshApprovedSiteCardsV47();
     renderAdditionalRoles();
+    if(window.BB_RENDER_ADDED_TRUCKS_V15) window.BB_RENDER_ADDED_TRUCKS_V15();
     updatePersonDragDropStateV11();
 
     const targetMismatch=state.assignments[targetId] && state.assignments[targetId].roleMismatch;
@@ -8897,6 +9284,282 @@ body.bb-view-only .mini-action{
       updatePersonDragDropStateV11();
     });
   }
+
+
+
+  // v14 — controlled truck number / vehicle identifier editing for Rocklea Fleet.
+  // Vehicle groups use the first approved Position ID in the group as a stable key,
+  // so a label can change without breaking the underlying position structure.
+  let activeVehicleGroupV14 = null;
+
+  function vehicleGroupKeyV14(group){
+    if(!group) return '';
+    const first=group.querySelector('[data-position-id]');
+    return first ? String(first.dataset.positionId || '') : '';
+  }
+
+  function vehicleClusterNameV14(group){
+    const section=group && group.closest('.fleet-cluster-v46,.fleet-lower-group-v46');
+    const header=section && section.querySelector(':scope > .team-group-title-v46');
+    if(!header) return 'Rocklea Fleet';
+    const raw=(header.childNodes[0] && header.childNodes[0].textContent ? header.childNodes[0].textContent : header.textContent).trim();
+    return raw.replace(/\s+/g,' ');
+  }
+
+  function positionIdsForVehicleV14(group){
+    return [...group.querySelectorAll('[data-position-id]')]
+      .map(el=>String(el.dataset.positionId || '').trim())
+      .filter(Boolean);
+  }
+
+  function originalVehicleLabelV14(group){
+    const title=group && group.querySelector(':scope > .vehicle-title-v46');
+    if(!title) return '';
+    return String(title.dataset.originalVehicleLabelV14 || title.textContent || '').trim();
+  }
+
+  function currentVehicleLabelV14(group){
+    const key=vehicleGroupKeyV14(group);
+    const saved=key && state.vehicleLabels[key];
+    return String(saved && saved.newLabel ? saved.newLabel : originalVehicleLabelV14(group)).trim();
+  }
+
+  function prettyClusterV14(cluster){
+    return String(cluster || '').replace(/^CLUSTER\s+/i,'Cluster ');
+  }
+
+  function applyVehicleLabelToGroupV14(group,label){
+    if(!group) return;
+    const title=group.querySelector(':scope > .vehicle-title-v46');
+    if(!title) return;
+    let span=title.querySelector('.vehicle-label-text-v14');
+    if(span) span.textContent=label;
+    title.dataset.currentVehicleLabelV14=label;
+    const cluster=prettyClusterV14(vehicleClusterNameV14(group));
+    group.querySelectorAll('.role-tag-v46.group').forEach(tag=>{
+      tag.textContent=`${cluster} · ${label}`;
+    });
+  }
+
+  function allVehicleGroupsV14(){
+    return [...document.querySelectorAll('#area-rocklea-fleet-team .fleet-cluster-grid-v46 .vehicle-group-v46, #area-rocklea-fleet-team .cluster-e-grid-v46 .vehicle-group-v46')];
+  }
+
+  function ensureVehicleModalV14(){
+    let modal=document.getElementById('vehicleNumberModalV14');
+    if(modal) return modal;
+    modal=document.createElement('div');
+    modal.id='vehicleNumberModalV14';
+    modal.className='bb-vehicle-modal-v14';
+    modal.innerHTML=`
+      <div class="bb-vehicle-dialog-v14" role="dialog" aria-modal="true" aria-labelledby="vehicleDialogTitleV14">
+        <div class="bb-vehicle-dialog-head-v14"><h3 id="vehicleDialogTitleV14">Change Truck Number</h3></div>
+        <div class="bb-vehicle-dialog-body-v14">
+          <div class="bb-vehicle-field-v14">
+            <label for="vehicleNumberInputV14">Truck number / vehicle identifier</label>
+            <input id="vehicleNumberInputV14" type="text" maxlength="24" autocomplete="off" />
+          </div>
+          <div class="bb-vehicle-warning-v14"><strong>Please be very sure before changing this.</strong><br/>Truck number changes affect the vehicle identifier shown against every position in this vehicle group. Prior advisement or approval from the <strong>Operations Manager</strong> is required before the change is saved.</div>
+          <label class="bb-vehicle-ack-v14"><input id="vehicleApprovalAckV14" type="checkbox"/><span>I confirm this truck-number change has been advised to or approved by the Operations Manager.</span></label>
+          <div id="vehicleErrorV14" class="bb-vehicle-error-v14"></div>
+          <div class="bb-vehicle-actions-v14">
+            <button id="vehicleCancelV14" class="bb-vehicle-cancel-v14" type="button">Cancel</button>
+            <button id="vehicleSaveV14" class="bb-vehicle-save-v14" type="button" disabled>Save Truck Number</button>
+          </div>
+        </div>
+      </div>`;
+    document.body.appendChild(modal);
+    const input=modal.querySelector('#vehicleNumberInputV14');
+    const ack=modal.querySelector('#vehicleApprovalAckV14');
+    const save=modal.querySelector('#vehicleSaveV14');
+    const error=modal.querySelector('#vehicleErrorV14');
+    ack.addEventListener('change',()=>{save.disabled=!ack.checked; error.textContent='';});
+    modal.querySelector('#vehicleCancelV14').addEventListener('click',()=>{modal.classList.remove('open');activeVehicleGroupV14=null;});
+    modal.addEventListener('click',e=>{if(e.target===modal){modal.classList.remove('open');activeVehicleGroupV14=null;}});
+    input.addEventListener('input',()=>{error.textContent='';});
+    save.addEventListener('click',()=>saveVehicleLabelV14());
+    return modal;
+  }
+
+  function openVehicleEditorV14(group){
+    if(window.BB_REQUIRE_EDITOR && !window.BB_REQUIRE_EDITOR()) return;
+    activeVehicleGroupV14=group;
+    const modal=ensureVehicleModalV14();
+    const input=modal.querySelector('#vehicleNumberInputV14');
+    const ack=modal.querySelector('#vehicleApprovalAckV14');
+    const save=modal.querySelector('#vehicleSaveV14');
+    const error=modal.querySelector('#vehicleErrorV14');
+    input.value=currentVehicleLabelV14(group);
+    ack.checked=false;
+    save.disabled=true;
+    error.textContent='';
+    modal.classList.add('open');
+    requestAnimationFrame(()=>{input.focus();input.select();});
+  }
+
+  function saveVehicleLabelV14(){
+    const group=activeVehicleGroupV14;
+    if(!group) return;
+    const modal=ensureVehicleModalV14();
+    const input=modal.querySelector('#vehicleNumberInputV14');
+    const ack=modal.querySelector('#vehicleApprovalAckV14');
+    const error=modal.querySelector('#vehicleErrorV14');
+    const next=String(input.value || '').trim().toUpperCase();
+    if(!next){error.textContent='Enter a truck number or vehicle identifier.';input.focus();return;}
+    if(!ack.checked){error.textContent='Operations Manager advisement/approval acknowledgement is required.';return;}
+
+    const duplicate=allVehicleGroupsV14().find(other=>other!==group && currentVehicleLabelV14(other).toUpperCase()===next);
+    if(duplicate){error.textContent=`${next} is already used by another Rocklea Fleet vehicle group.`;return;}
+
+    const key=vehicleGroupKeyV14(group);
+    if(!key){error.textContent='This vehicle group does not have a stable Position ID and cannot be changed.';return;}
+    const before=currentVehicleLabelV14(group);
+    if(before.toUpperCase()===next){modal.classList.remove('open');activeVehicleGroupV14=null;toast('Truck number is unchanged.');return;}
+
+    const cluster=vehicleClusterNameV14(group);
+    const positionIds=positionIdsForVehicleV14(group);
+    state.vehicleLabels[key]={
+      key,
+      originalLabel:originalVehicleLabelV14(group),
+      oldLabel:before,
+      newLabel:next,
+      cluster,
+      positionIds,
+      approvalAcknowledged:true,
+      approvalRequirement:'Prior advisement or approval from Operations Manager',
+      changedAt:new Date().toISOString()
+    };
+
+    positionIds.forEach(id=>{
+      if(!state.history[id]) state.history[id]=[];
+      state.history[id].push({
+        changedAt:new Date().toISOString(),
+        action:'Truck number / vehicle identifier updated',
+        summary:`${cluster}: ${before} → ${next}. Operations Manager advisement/approval acknowledged.`,
+        snapshot:{truckNumber:next,previousTruckNumber:before,cluster,approvalAcknowledged:true}
+      });
+    });
+
+    saveState();
+    applyVehicleLabelToGroupV14(group,next);
+    modal.classList.remove('open');
+    activeVehicleGroupV14=null;
+    toast(`Truck number updated: ${before} → ${next}.`);
+  }
+
+  function initialiseVehicleEditorsV14(){
+    allVehicleGroupsV14().forEach(group=>{
+      const title=group.querySelector(':scope > .vehicle-title-v46');
+      if(!title) return;
+      if(!title.dataset.originalVehicleLabelV14){
+        title.dataset.originalVehicleLabelV14=String(title.textContent || '').trim();
+        const original=title.dataset.originalVehicleLabelV14;
+        title.textContent='';
+        const span=document.createElement('span');
+        span.className='vehicle-label-text-v14';
+        span.textContent=original;
+        const btn=document.createElement('button');
+        btn.type='button';
+        btn.className='vehicle-edit-btn-v14';
+        btn.textContent='EDIT';
+        btn.title='Change truck number / vehicle identifier';
+        btn.setAttribute('aria-label',`Edit truck number ${original}`);
+        btn.setAttribute('data-editor-only','true');
+        btn.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();openVehicleEditorV14(group);});
+        title.append(span,btn);
+        title.classList.add('vehicle-editable-v14');
+      }
+      const key=vehicleGroupKeyV14(group);
+      const saved=key && state.vehicleLabels[key];
+      applyVehicleLabelToGroupV14(group,String(saved && saved.newLabel ? saved.newLabel : title.dataset.originalVehicleLabelV14));
+    });
+  }
+  window.initialiseVehicleEditorsV14=initialiseVehicleEditorsV14;
+
+  window.BB_TRUCK_POSITION_API_V17={
+    list(vehicleId){
+      return (state.addedTruckPositions || []).filter(p=>p && p.active!==false && (!vehicleId || p.vehicleId===vehicleId)).map(p=>({...p}));
+    },
+    get(positionId){const p=truckPositionFor(positionId);return p?{...p}:null;},
+    create(input){
+      const now=new Date().toISOString();
+      const positionId=generateRockleaFleetPositionId();
+      const budgetStatus=String(input.budgetStatus||'Approved Budgeted FTE');
+      const record={
+        positionId,
+        vehicleId:String(input.vehicleId||''),
+        cluster:String(input.cluster||''),
+        truckNumber:String(input.truckNumber||''),
+        roleTitle:String(input.roleTitle||'Truck Driver'),
+        positionCode:roleCodeForV17(input.roleTitle||'Truck Driver'),
+        approvedFTE:Number(input.approvedFTE ?? 1),
+        establishmentType:String(input.establishmentType||'Standard'),
+        approvedEmploymentType:String(input.approvedEmploymentType||'Full Time'),
+        budgetStatus,
+        reportingManager:ROCKLEA_DPM_ID,
+        active:true,
+        chartVisible:true,
+        chartStatus:'Visible - Vacant',
+        hasEverBeenAssigned:false,
+        createdAt:now,
+        updatedAt:now,
+        dataRetentionStatus:'Retained'
+      };
+      state.addedTruckPositions.push(record);
+      state.roleDetails[positionId]={
+        approvedFTE:record.approvedFTE,
+        establishmentType:record.establishmentType,
+        approvedEmploymentType:record.approvedEmploymentType,
+        budgetStatus:record.budgetStatus,
+        labourHire:'No',
+        labourHireProvider:'',
+        updatedAt:now
+      };
+      state.history[positionId]=state.history[positionId]||[];
+      state.history[positionId].push({changedAt:now,action:'Position created in added truck',summary:`${record.roleTitle} created under ${record.truckNumber} (${record.cluster}) · ${budgetStatus}`,snapshot:{assignment:null,roleDetails:{...state.roleDetails[positionId]},vehicleId:record.vehicleId,truckNumber:record.truckNumber}});
+      saveState();
+      return {...record};
+    },
+    canDeleteVehicle(vehicleId){
+      const items=(state.addedTruckPositions||[]).filter(p=>p&&p.active!==false&&p.vehicleId===vehicleId);
+      const blockers=[];
+      items.forEach(p=>{
+        const assigned=state.assignments[p.positionId]&&String(state.assignments[p.positionId].personName||'').trim();
+        const budget=String((state.roleDetails[p.positionId]||{}).budgetStatus||p.budgetStatus||'');
+        if(assigned) blockers.push(`${p.positionId} is currently assigned`);
+        else if(!budget.toLowerCase().includes('outside approved')) blockers.push(`${p.positionId} is an approved budgeted position`);
+      });
+      return {ok:blockers.length===0,blockers};
+    },
+    retireVehiclePositions(vehicleId){
+      const now=new Date().toISOString();
+      (state.addedTruckPositions||[]).filter(p=>p&&p.active!==false&&p.vehicleId===vehicleId).forEach(p=>{
+        p.active=false;p.chartVisible=false;p.chartStatus='Retained - Truck Deleted';p.updatedAt=now;p.dataRetentionStatus='Retained';
+        state.history[p.positionId]=state.history[p.positionId]||[];
+        state.history[p.positionId].push({changedAt:now,action:'Truck deleted · position retained in data',summary:`Position retained in backend data after custom truck ${p.truckNumber} was deleted.`,snapshot:{assignment:state.assignments[p.positionId]||null,roleDetails:{...roleDetailsFor(p.positionId)},vehicleId}});
+      });
+      saveState();
+    },
+    updateVehicleLabel(vehicleId,cluster,truckNumber,previousTruckNumber=''){
+      const now=new Date().toISOString();
+      (state.addedTruckPositions||[]).filter(p=>p&&p.active!==false&&p.vehicleId===vehicleId).forEach(p=>{
+        const before=p.truckNumber||previousTruckNumber||'';
+        p.cluster=cluster||p.cluster;
+        p.truckNumber=truckNumber||p.truckNumber;
+        p.updatedAt=now;
+        state.history[p.positionId]=state.history[p.positionId]||[];
+        if(before!==p.truckNumber){
+          state.history[p.positionId].push({changedAt:now,action:'Truck number changed',summary:`Truck ${before||'—'} → ${p.truckNumber}. Position ID retained.`,snapshot:{assignment:state.assignments[p.positionId]||null,roleDetails:{...roleDetailsFor(p.positionId)},vehicleId,truckNumber:p.truckNumber}});
+        }
+      });
+      saveState();
+    },
+    openAssignment(positionId){openAssignment(positionId);},
+    refresh(){refreshRoleCards();updatePersonDragDropStateV11();},
+    save(){saveState();}
+  };
+
+  initialiseVehicleEditorsV14();
 
   refreshRoleCards();refreshApprovedSiteCardsV47();renderRequests();renderAdditionalRoles();updatePersonDragDropStateV11();
 })();
@@ -10080,5 +10743,694 @@ window.BB_MANAGEMENT_COLOUR_RULE = 'green-only-when-valid-assigned';
     loadAccess();
   }
 })();
-</script></body>
+</script>
+<style id="bb-v15-truck-controls-css">
+/* V15 — make truck editing clearly visible and add controlled truck creation. */
+#area-rocklea-fleet-team .vehicle-edit-btn-v14{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  right:4px !important;
+  min-width:38px !important;
+  min-height:20px !important;
+  padding:3px 7px !important;
+  border:1px solid #79B991 !important;
+  background:#EEF8F1 !important;
+  color:#006B3A !important;
+  box-shadow:0 1px 2px rgba(0,75,40,.10) !important;
+  font:800 8.5px/1 Arial,sans-serif !important;
+  letter-spacing:.35px !important;
+  opacity:1 !important;
+}
+#area-rocklea-fleet-team .vehicle-edit-btn-v14:hover{
+  background:#DDF1E4 !important;
+  color:#004C2A !important;
+  border-color:#45A36B !important;
+}
+#area-rocklea-fleet-team .vehicle-title-v46.vehicle-editable-v14{
+  padding-left:44px !important;
+  padding-right:48px !important;
+}
+#area-rocklea-fleet-team .cluster-add-truck-btn-v15{
+  position:absolute;
+  right:38px;
+  top:50%;
+  transform:translateY(-50%);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  min-height:23px;
+  padding:4px 8px;
+  border:1px solid rgba(255,255,255,.92);
+  border-radius:5px;
+  background:#fff;
+  color:#00743D;
+  font:800 8.5px/1 Arial,sans-serif;
+  letter-spacing:.25px;
+  cursor:pointer;
+  white-space:nowrap;
+  box-shadow:0 1px 2px rgba(0,0,0,.08);
+}
+body.bb-editor-enabled #area-rocklea-fleet-team .cluster-add-truck-btn-v15{display:inline-flex;}
+#area-rocklea-fleet-team .cluster-add-truck-btn-v15:hover{background:#EAF6EE;color:#005C31;}
+#area-rocklea-fleet-team .added-truck-v15 .vehicle-card-stack-v46{
+  min-height:78px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:10px !important;
+}
+#area-rocklea-fleet-team .empty-truck-v15{
+  width:100%;
+  min-height:52px;
+  border:1px dashed #B8D5C2;
+  border-radius:6px;
+  background:#F8FBF9;
+  color:#63736A;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:8px;
+  box-sizing:border-box;
+  font:700 8.5px/1.25 Arial,sans-serif;
+}
+/* When a cluster gains another truck, keep every truck number on one horizontal
+   line. The cluster scrolls horizontally before the boxes are compressed. */
+#area-rocklea-fleet-team .vehicle-grid-v46.truck-row-v15{
+  overflow-x:auto !important;
+  overflow-y:hidden !important;
+  align-items:start !important;
+  scrollbar-width:thin;
+}
+#area-rocklea-fleet-team .vehicle-grid-v46.truck-row-v15::-webkit-scrollbar{height:7px;}
+#area-rocklea-fleet-team .vehicle-grid-v46.truck-row-v15::-webkit-scrollbar-thumb{background:#B9CFC1;border-radius:8px;}
+
+.bb-add-truck-modal-v15{
+  position:fixed; inset:0; z-index:10070; display:none; align-items:center; justify-content:center;
+  padding:22px; background:rgba(19,31,25,.54);
+}
+.bb-add-truck-modal-v15.open{display:flex;}
+.bb-add-truck-dialog-v15{
+  width:min(560px,96vw); background:#fff; border-radius:14px; overflow:hidden;
+  box-shadow:0 18px 55px rgba(0,0,0,.25); border:1px solid #D5E5DA;
+}
+.bb-add-truck-head-v15{padding:16px 18px 12px;border-bottom:1px solid #E3ECE6;}
+.bb-add-truck-head-v15 h3{margin:0;color:#173B28;font:800 18px/1.2 Arial,sans-serif;}
+.bb-add-truck-body-v15{padding:18px;}
+.bb-add-truck-field-v15 label{display:block;margin-bottom:6px;color:#34463C;font:700 11px/1.2 Arial,sans-serif;}
+.bb-add-truck-field-v15 input{width:100%;box-sizing:border-box;border:1px solid #AFC8B8;border-radius:7px;padding:10px 11px;font:700 14px Arial,sans-serif;color:#173B28;outline:none;}
+.bb-add-truck-field-v15 input:focus{border-color:#00954A;box-shadow:0 0 0 3px rgba(0,149,74,.10);}
+.bb-add-truck-warning-v15{margin-top:14px;padding:12px;border:1px solid #D8B55A;border-radius:8px;background:#FFF9E8;color:#5F4A0F;font:11px/1.4 Arial,sans-serif;}
+.bb-add-truck-ack-v15{margin-top:13px;display:flex;gap:9px;align-items:flex-start;color:#34463C;font:700 10.5px/1.35 Arial,sans-serif;}
+.bb-add-truck-ack-v15 input{margin-top:2px;}
+.bb-add-truck-error-v15{min-height:18px;margin-top:8px;color:#B52F2A;font:700 10px Arial,sans-serif;}
+.bb-add-truck-actions-v15{display:flex;justify-content:flex-end;gap:8px;margin-top:9px;}
+.bb-add-truck-actions-v15 button{border-radius:7px;padding:8px 12px;font:800 10px Arial,sans-serif;cursor:pointer;}
+.bb-add-truck-cancel-v15{background:#fff;border:1px solid #B8C9BE;color:#45584D;}
+.bb-add-truck-save-v15{background:#00954A;border:1px solid #00954A;color:#fff;}
+.bb-add-truck-save-v15:disabled{opacity:.42;cursor:not-allowed;}
+</style>
+
+<style id="bb-v16-three-trucks-per-row">
+/* ============================================================
+   V16 — Clusters A-D wrap after three trucks.
+   Row 1 holds trucks 1-3; truck 4 begins row 2.
+   ============================================================ */
+#area-rocklea-fleet-team .fleet-cluster-grid-v46 > .fleet-cluster-v46 > .vehicle-grid-v46.truck-wrap-three-v16{
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:8px !important;
+  overflow:visible !important;
+  align-items:start !important;
+  align-content:start !important;
+}
+#area-rocklea-fleet-team .fleet-cluster-grid-v46 > .fleet-cluster-v46 > .vehicle-grid-v46.truck-wrap-three-v16 > .vehicle-group-v46{
+  width:100% !important;
+  min-width:0 !important;
+}
+/* Do not show a horizontal truck scrollbar in Clusters A-D. */
+#area-rocklea-fleet-team .fleet-cluster-grid-v46 > .fleet-cluster-v46 > .vehicle-grid-v46.truck-wrap-three-v16::-webkit-scrollbar{
+  display:none !important;
+}
+</style>
+<script id="bb-v15-add-truck-controls">
+(() => {
+  const STORAGE_KEY_V15='bb-rocklea-fleet-local-v1';
+  const CLUSTERS_V15=['CLUSTER A','CLUSTER B','CLUSTER C','CLUSTER D','CLUSTER E'];
+  let addTruckContextV15=null;
+
+  function readStateV15(){
+    try{return JSON.parse(localStorage.getItem(STORAGE_KEY_V15)||'{}')||{};}catch(_){return {};}
+  }
+  function writeStateV15(s){try{localStorage.setItem(STORAGE_KEY_V15,JSON.stringify(s));}catch(_){} }
+  function ensureV15State(){
+    const s=readStateV15();
+    if(!Array.isArray(s.addedVehicles)) s.addedVehicles=[];
+    if(!Array.isArray(s.vehicleChanges)) s.vehicleChanges=[];
+    if(!s.vehicleLabels || typeof s.vehicleLabels!=='object') s.vehicleLabels={};
+    return s;
+  }
+  function normV15(v){return String(v||'').trim().toUpperCase();}
+  function cleanClusterV15(v){return normV15(v).replace(/\s+/g,' ');}
+
+  function clusterSectionV15(cluster){
+    const wanted=cleanClusterV15(cluster);
+    return [...document.querySelectorAll('#area-rocklea-fleet-team .fleet-cluster-v46, #area-rocklea-fleet-team .fleet-lower-group-v46')]
+      .find(section=>{
+        const h=section.querySelector(':scope > .team-group-title-v46');
+        if(!h) return false;
+        const clone=h.cloneNode(true);
+        clone.querySelectorAll('button').forEach(b=>b.remove());
+        return cleanClusterV15(clone.textContent)===wanted;
+      }) || null;
+  }
+  function clusterGridV15(cluster){
+    const section=clusterSectionV15(cluster);
+    return section ? section.querySelector(':scope > .vehicle-grid-v46') : null;
+  }
+  function currentTitleTextV15(group){
+    const t=group && group.querySelector(':scope > .vehicle-title-v46');
+    if(!t) return '';
+    const span=t.querySelector('.vehicle-label-text-v14');
+    return normV15(span ? span.textContent : t.textContent.replace(/EDIT/ig,''));
+  }
+  function allTruckGroupsV15(){
+    return [...document.querySelectorAll('#area-rocklea-fleet-team .fleet-cluster-grid-v46 .vehicle-group-v46, #area-rocklea-fleet-team .cluster-e-grid-v46 .vehicle-group-v46')];
+  }
+  function duplicateTruckV15(label,excludeVehicleId=''){
+    const wanted=normV15(label);
+    return allTruckGroupsV15().some(g=>{
+      if(excludeVehicleId && String(g.dataset.vehicleRecordId||'')===String(excludeVehicleId)) return false;
+      return currentTitleTextV15(g)===wanted;
+    });
+  }
+  function generateVehicleIdV15(state){
+    const used=new Set((state.addedVehicles||[]).map(v=>String(v.vehicleId||'')));
+    let n=1,id='';
+    do{id=`VEH-RF-${String(n++).padStart(3,'0')}`;}while(used.has(id));
+    return id;
+  }
+  function applyOneRowV15(grid,cluster){
+    if(!grid) return;
+    const count=grid.querySelectorAll(':scope > .vehicle-group-v46').length || 1;
+    const cleaned=cleanClusterV15(cluster);
+
+    if(cleaned==='CLUSTER E'){
+      /* Cluster E keeps its existing single-row layout. */
+      grid.classList.add('truck-row-v15');
+      grid.classList.remove('truck-wrap-three-v16');
+      grid.style.setProperty('grid-template-columns',`repeat(${count}, minmax(145px, 1fr))`,'important');
+      return;
+    }
+
+    /* Clusters A-D: maximum three trucks per row. Truck 4 starts row 2,
+       trucks 5-6 continue on row 2, and so on. */
+    grid.classList.remove('truck-row-v15');
+    grid.classList.add('truck-wrap-three-v16');
+    grid.style.setProperty('grid-template-columns','repeat(3, minmax(0, 1fr))','important');
+  }
+  function refreshAllRowsV15(){
+    CLUSTERS_V15.forEach(c=>applyOneRowV15(clusterGridV15(c),c));
+  }
+
+  function makeAddedTruckGroupV15(record){
+    const group=document.createElement('section');
+    group.className='vehicle-group-v46 added-truck-v15';
+    group.dataset.vehicleRecordId=record.vehicleId;
+    group.dataset.clusterV15=record.cluster;
+
+    const title=document.createElement('div');
+    title.className='vehicle-title-v46 vehicle-editable-v14';
+    title.dataset.originalVehicleLabelV14=record.truckNumber;
+    title.dataset.currentVehicleLabelV14=record.truckNumber;
+
+    const span=document.createElement('span');
+    span.className='vehicle-label-text-v14';
+    span.textContent=record.truckNumber;
+
+    const edit=document.createElement('button');
+    edit.type='button';
+    edit.className='vehicle-edit-btn-v14';
+    edit.textContent='EDIT';
+    edit.title='Change truck number / vehicle identifier';
+    edit.setAttribute('data-editor-only','true');
+    edit.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();openAddTruckModalV15(record.cluster,'edit',record.vehicleId);});
+    title.append(span,edit);
+
+    const stack=document.createElement('div');
+    stack.className='vehicle-card-stack-v46';
+    const empty=document.createElement('div');
+    empty.className='empty-truck-v15';
+    empty.innerHTML='Truck added<br/>No positions assigned yet';
+    stack.appendChild(empty);
+
+    group.append(title,stack);
+    return group;
+  }
+
+  function renderAddedTrucksV15(){
+    const state=ensureV15State();
+    document.querySelectorAll('#area-rocklea-fleet-team .added-truck-v15').forEach(el=>el.remove());
+    (state.addedVehicles||[]).filter(v=>v && v.active!==false).forEach(record=>{
+      const grid=clusterGridV15(record.cluster);
+      if(!grid) return;
+      grid.appendChild(makeAddedTruckGroupV15(record));
+    });
+    refreshAllRowsV15();
+    if(window.equaliseFleetClustersV51) requestAnimationFrame(()=>window.equaliseFleetClustersV51());
+  }
+
+  function ensureAddTruckModalV15(){
+    let modal=document.getElementById('addTruckModalV15');
+    if(modal) return modal;
+    modal=document.createElement('div');
+    modal.id='addTruckModalV15';
+    modal.className='bb-add-truck-modal-v15';
+    modal.innerHTML=`
+      <div class="bb-add-truck-dialog-v15" role="dialog" aria-modal="true" aria-labelledby="addTruckTitleV15">
+        <div class="bb-add-truck-head-v15"><h3 id="addTruckTitleV15">Add Truck</h3></div>
+        <div class="bb-add-truck-body-v15">
+          <div class="bb-add-truck-field-v15">
+            <label for="addTruckNumberV15">Truck number / vehicle identifier</label>
+            <input id="addTruckNumberV15" type="text" maxlength="24" autocomplete="off" placeholder="e.g. 1550" />
+          </div>
+          <div class="bb-add-truck-warning-v15"><strong>Approval reminder</strong><br/>Adding or changing a truck number changes the Rocklea Fleet structure shown on this chart. Please be very sure the change is correct. Prior advisement or approval from the <strong>Operations Manager</strong> is required before it is saved.</div>
+          <label class="bb-add-truck-ack-v15"><input id="addTruckApprovalV15" type="checkbox"/><span>I confirm this truck addition/change has been advised to or approved by the Operations Manager.</span></label>
+          <div id="addTruckErrorV15" class="bb-add-truck-error-v15"></div>
+          <div class="bb-add-truck-actions-v15">
+            <button id="addTruckCancelV15" class="bb-add-truck-cancel-v15" type="button">Cancel</button>
+            <button id="addTruckSaveV15" class="bb-add-truck-save-v15" type="button" disabled>Save Truck</button>
+          </div>
+        </div>
+      </div>`;
+    document.body.appendChild(modal);
+    const ack=modal.querySelector('#addTruckApprovalV15');
+    const save=modal.querySelector('#addTruckSaveV15');
+    const input=modal.querySelector('#addTruckNumberV15');
+    const err=modal.querySelector('#addTruckErrorV15');
+    ack.addEventListener('change',()=>{save.disabled=!ack.checked;err.textContent='';});
+    input.addEventListener('input',()=>{err.textContent='';});
+    modal.querySelector('#addTruckCancelV15').addEventListener('click',()=>{modal.classList.remove('open');addTruckContextV15=null;});
+    modal.addEventListener('click',e=>{if(e.target===modal){modal.classList.remove('open');addTruckContextV15=null;}});
+    save.addEventListener('click',saveTruckV15);
+    return modal;
+  }
+
+  function openAddTruckModalV15(cluster,mode='add',vehicleId=''){
+    if(window.BB_REQUIRE_EDITOR && !window.BB_REQUIRE_EDITOR()) return;
+    const state=ensureV15State();
+    const record=mode==='edit' ? (state.addedVehicles||[]).find(v=>v.vehicleId===vehicleId) : null;
+    addTruckContextV15={cluster:cleanClusterV15(cluster),mode,vehicleId};
+    const modal=ensureAddTruckModalV15();
+    const title=modal.querySelector('#addTruckTitleV15');
+    const input=modal.querySelector('#addTruckNumberV15');
+    const ack=modal.querySelector('#addTruckApprovalV15');
+    const save=modal.querySelector('#addTruckSaveV15');
+    const err=modal.querySelector('#addTruckErrorV15');
+    title.textContent=mode==='edit' ? `Change Truck Number — ${addTruckContextV15.cluster}` : `Add Truck — ${addTruckContextV15.cluster}`;
+    input.value=record ? record.truckNumber : '';
+    ack.checked=false; save.disabled=true; err.textContent='';
+    save.textContent=mode==='edit' ? 'Save Truck Number' : 'Add Truck';
+    modal.classList.add('open');
+    requestAnimationFrame(()=>{input.focus(); if(mode==='edit') input.select();});
+  }
+
+  function saveTruckV15(){
+    const ctx=addTruckContextV15;
+    if(!ctx) return;
+    const modal=ensureAddTruckModalV15();
+    const input=modal.querySelector('#addTruckNumberV15');
+    const ack=modal.querySelector('#addTruckApprovalV15');
+    const err=modal.querySelector('#addTruckErrorV15');
+    const next=normV15(input.value);
+    if(!next){err.textContent='Enter a truck number or vehicle identifier.';input.focus();return;}
+    if(!ack.checked){err.textContent='Operations Manager advisement/approval acknowledgement is required.';return;}
+    if(duplicateTruckV15(next,ctx.mode==='edit'?ctx.vehicleId:'')){err.textContent=`${next} is already used by another Rocklea Fleet truck.`;return;}
+
+    const state=ensureV15State();
+    const now=new Date().toISOString();
+    if(ctx.mode==='add'){
+      const vehicleId=generateVehicleIdV15(state);
+      const record={vehicleId,cluster:ctx.cluster,truckNumber:next,active:true,approvalAcknowledged:true,approvalRequirement:'Prior advisement or approval from Operations Manager',createdAt:now,updatedAt:now};
+      state.addedVehicles.push(record);
+      state.vehicleChanges.push({vehicleId,cluster:ctx.cluster,action:'Add Truck',oldTruckNumber:'',newTruckNumber:next,approvalAcknowledged:true,changedAt:now});
+      writeStateV15(state);
+      modal.classList.remove('open'); addTruckContextV15=null;
+      renderAddedTrucksV15();
+      if(typeof window.toast==='function') window.toast(`Truck ${next} added to ${ctx.cluster}.`);
+    }else{
+      const record=(state.addedVehicles||[]).find(v=>v.vehicleId===ctx.vehicleId);
+      if(!record){err.textContent='The added truck record could not be found.';return;}
+      const before=normV15(record.truckNumber);
+      if(before===next){modal.classList.remove('open');addTruckContextV15=null;return;}
+      record.truckNumber=next; record.updatedAt=now; record.approvalAcknowledged=true;
+      state.vehicleChanges.push({vehicleId:record.vehicleId,cluster:record.cluster,action:'Change Truck Number',oldTruckNumber:before,newTruckNumber:next,approvalAcknowledged:true,changedAt:now});
+      writeStateV15(state);
+      if(window.BB_TRUCK_POSITION_API_V17 && window.BB_TRUCK_POSITION_API_V17.updateVehicleLabel){
+        window.BB_TRUCK_POSITION_API_V17.updateVehicleLabel(record.vehicleId,record.cluster,next,before);
+      }
+      modal.classList.remove('open'); addTruckContextV15=null;
+      renderAddedTrucksV15();
+    }
+  }
+
+  function addClusterButtonsV15(){
+    CLUSTERS_V15.forEach(cluster=>{
+      const section=clusterSectionV15(cluster);
+      const header=section && section.querySelector(':scope > .team-group-title-v46');
+      if(!header || header.querySelector('.cluster-add-truck-btn-v15')) return;
+      const btn=document.createElement('button');
+      btn.type='button';
+      btn.className='cluster-add-truck-btn-v15';
+      btn.textContent='+ ADD TRUCK';
+      btn.title=`Add truck to ${cluster}`;
+      btn.setAttribute('aria-label',`Add truck to ${cluster}`);
+      btn.setAttribute('data-editor-only','true');
+      btn.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();openAddTruckModalV15(cluster,'add','');});
+      header.appendChild(btn);
+    });
+  }
+
+  function improveStaticEditButtonsV15(){
+    document.querySelectorAll('#area-rocklea-fleet-team .vehicle-edit-btn-v14').forEach(btn=>{
+      btn.textContent='EDIT';
+      btn.title='Edit truck number — Operations Manager advisement/approval required';
+    });
+  }
+
+  function initV15(){
+    addClusterButtonsV15();
+    improveStaticEditButtonsV15();
+    renderAddedTrucksV15();
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',initV15,{once:true}); else initV15();
+  window.addEventListener('bb-access-ready',()=>{addClusterButtonsV15();improveStaticEditButtonsV15();});
+  window.BB_RENDER_ADDED_TRUCKS_V15=renderAddedTrucksV15;
+})();
+</script>
+
+
+<style id="bb-v17-custom-truck-positions-css">
+/* V17 — controls for trucks added by the user and positions created inside them. */
+#area-rocklea-fleet-team .added-truck-v15 .vehicle-card-stack-v46{
+  min-height:78px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:stretch !important;
+  justify-content:flex-start !important;
+  gap:6px !important;
+  padding:7px !important;
+}
+#area-rocklea-fleet-team .custom-truck-actions-v17{
+  display:flex;
+  gap:5px;
+  padding:5px 5px 0;
+}
+#area-rocklea-fleet-team .custom-truck-actions-v17 button{
+  flex:1 1 0;
+  min-width:0;
+  border-radius:5px;
+  padding:5px 4px;
+  font:800 7.8px/1 Arial,sans-serif;
+  letter-spacing:.15px;
+  cursor:pointer;
+}
+#area-rocklea-fleet-team .add-position-btn-v17{
+  border:1px solid #74B88C;
+  background:#ECF7F0;
+  color:#006B39;
+}
+#area-rocklea-fleet-team .delete-truck-btn-v17{
+  border:1px solid #D7A6A0;
+  background:#FFF5F3;
+  color:#9E3028;
+}
+body.bb-view-only #area-rocklea-fleet-team .custom-truck-actions-v17{display:none !important;}
+#area-rocklea-fleet-team .custom-truck-position-v17 .role-location-v46 strong{color:#006B39;}
+#area-rocklea-fleet-team .hidden-position-note-v17{
+  border:1px dashed #CFDCD3;
+  border-radius:6px;
+  background:#FAFCFA;
+  color:#66736A;
+  padding:7px;
+  text-align:center;
+  font:700 7.8px/1.25 Arial,sans-serif;
+}
+.bb-v17-modal{
+  position:fixed; inset:0; z-index:10090; display:none; align-items:center; justify-content:center;
+  padding:22px; background:rgba(19,31,25,.56);
+}
+.bb-v17-modal.open{display:flex;}
+.bb-v17-dialog{
+  width:min(590px,96vw); max-height:92vh; overflow:auto; background:#fff; border-radius:14px;
+  box-shadow:0 18px 55px rgba(0,0,0,.26); border:1px solid #D5E5DA;
+}
+.bb-v17-head{padding:16px 18px 12px;border-bottom:1px solid #E3ECE6;}
+.bb-v17-head h3{margin:0;color:#173B28;font:800 18px/1.2 Arial,sans-serif;}
+.bb-v17-body{padding:18px;}
+.bb-v17-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.bb-v17-field.full{grid-column:1/-1;}
+.bb-v17-field label{display:block;margin-bottom:5px;color:#34463C;font:700 10.5px/1.2 Arial,sans-serif;}
+.bb-v17-field input,.bb-v17-field select{
+  width:100%;box-sizing:border-box;border:1px solid #AFC8B8;border-radius:7px;padding:9px 10px;
+  font:700 12px Arial,sans-serif;color:#173B28;background:#fff;outline:none;
+}
+.bb-v17-field input:focus,.bb-v17-field select:focus{border-color:#00954A;box-shadow:0 0 0 3px rgba(0,149,74,.10);}
+.bb-v17-note{margin-top:13px;padding:11px 12px;border:1px solid #D8B55A;border-radius:8px;background:#FFF9E8;color:#5F4A0F;font:10.5px/1.4 Arial,sans-serif;}
+.bb-v17-ack{margin-top:12px;display:flex;gap:8px;align-items:flex-start;color:#34463C;font:700 10.5px/1.35 Arial,sans-serif;}
+.bb-v17-error{min-height:17px;margin-top:7px;color:#B52F2A;font:700 10px Arial,sans-serif;}
+.bb-v17-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:10px;}
+.bb-v17-actions button{border-radius:7px;padding:8px 12px;font:800 10px Arial,sans-serif;cursor:pointer;}
+.bb-v17-cancel{background:#fff;border:1px solid #B8C9BE;color:#45584D;}
+.bb-v17-save{background:#00954A;border:1px solid #00954A;color:#fff;}
+.bb-v17-danger{background:#B52F2A;border:1px solid #B52F2A;color:#fff;}
+.bb-v17-save:disabled,.bb-v17-danger:disabled{opacity:.42;cursor:not-allowed;}
+@media(max-width:640px){.bb-v17-grid{grid-template-columns:1fr;}.bb-v17-field.full{grid-column:auto;}}
+</style>
+<script id="bb-v17-custom-truck-position-controls">
+(() => {
+  const STORAGE_KEY='bb-rocklea-fleet-local-v1';
+  let addPositionVehicleId='';
+  let deleteVehicleId='';
+
+  function api(){return window.BB_TRUCK_POSITION_API_V17 || null;}
+  function readState(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')||{};}catch(_){return {};}}
+  function writeState(s){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(s));}catch(_){}}
+  function toastV17(msg){
+    const el=document.getElementById('orgToast');
+    if(!el) return;
+    el.textContent=msg;el.classList.add('show');
+    clearTimeout(window.__bbV17Toast);window.__bbV17Toast=setTimeout(()=>el.classList.remove('show'),3200);
+  }
+  function esc(v){return String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');}
+  function roleCode(title){
+    const t=String(title||'').toLowerCase();
+    if(t.includes('offsider')) return 'O';
+    if(t.includes('driver trainer')) return 'DT';
+    if(t.includes('driver')) return 'TD';
+    return String(title||'R').split(/\s+/).filter(Boolean).map(x=>x[0]).join('').slice(0,3).toUpperCase()||'R';
+  }
+  function vehicleRecord(vehicleId){
+    const s=readState();
+    return (s.addedVehicles||[]).find(v=>v&&v.vehicleId===vehicleId&&v.active!==false)||null;
+  }
+  function assignmentFor(positionId){const s=readState();return (s.assignments||{})[positionId]||null;}
+  function roleDetailsFor(positionId){const s=readState();return (s.roleDetails||{})[positionId]||{};}
+
+  function makePositionCard(rec){
+    const d=roleDetailsFor(rec.positionId);
+    const a=assignmentFor(rec.positionId);
+    const outside=String(d.budgetStatus||rec.budgetStatus||'').toLowerCase().includes('outside approved');
+    const card=document.createElement('div');
+    card.className='role-card-v46 role-interactive custom-truck-position-v17 '+(outside?'type-casual outside-approved-budget':(a&&a.personName?'type-full':'type-open'));
+    card.dataset.positionArea='Rocklea Fleet Team';
+    card.dataset.positionId=rec.positionId;
+    card.setAttribute('role','button');
+    card.setAttribute('tabindex','0');
+    card.setAttribute('aria-label',`${rec.roleTitle} — manage person assignment`);
+    card.innerHTML=`
+      <div class="role-code-v46">${esc(rec.positionCode||roleCode(rec.roleTitle))}</div>
+      <div class="role-body-v46">
+        <div class="role-title-v46">${esc(rec.roleTitle)}</div>
+        <div class="role-location-v46"><strong>${esc(rec.positionId)}</strong></div>
+        <div class="role-location-v46">Operations · Rocklea</div>
+        <div class="role-fte-v46">${Number(d.approvedFTE??rec.approvedFTE??1).toFixed(1)} FTE | ${esc(d.approvedEmploymentType||rec.approvedEmploymentType||'Full Time')}</div>
+        <div class="role-tags-v46"><span class="role-tag-v46 team">Rocklea Fleet Team</span><span class="role-tag-v46 group">${esc(rec.cluster)} · ${esc(rec.truckNumber)}</span></div>
+        <div class="role-dynamic-v46"></div>
+      </div>`;
+    return card;
+  }
+
+  function enhanceTruck(group){
+    if(!group || group.dataset.v17Enhanced==='1') return;
+    const vehicleId=group.dataset.vehicleRecordId||'';
+    if(!vehicleId) return;
+    group.dataset.v17Enhanced='1';
+
+    const title=group.querySelector(':scope > .vehicle-title-v46');
+    const stack=group.querySelector(':scope > .vehicle-card-stack-v46');
+    if(!title||!stack) return;
+
+    const bar=document.createElement('div');
+    bar.className='custom-truck-actions-v17';
+    bar.innerHTML=`<button type="button" class="add-position-btn-v17" data-editor-only="true">+ ADD POSITION</button><button type="button" class="delete-truck-btn-v17" data-editor-only="true">DELETE TRUCK</button>`;
+    title.insertAdjacentElement('afterend',bar);
+    bar.querySelector('.add-position-btn-v17').addEventListener('click',e=>{e.preventDefault();e.stopPropagation();openAddPosition(vehicleId);});
+    bar.querySelector('.delete-truck-btn-v17').addEventListener('click',e=>{e.preventDefault();e.stopPropagation();openDeleteTruck(vehicleId);});
+
+    renderPositions(group,vehicleId);
+  }
+
+  function renderPositions(group,vehicleId){
+    const stack=group.querySelector(':scope > .vehicle-card-stack-v46');
+    if(!stack) return;
+    stack.innerHTML='';
+    const A=api();
+    const all=A?A.list(vehicleId):[];
+    const visible=all.filter(p=>p.active!==false&&p.chartVisible!==false);
+    visible.forEach(p=>stack.appendChild(makePositionCard(p)));
+    if(!visible.length){
+      const empty=document.createElement('div');
+      empty.className='empty-truck-v15';
+      const hiddenCount=all.filter(p=>p.active!==false&&p.chartVisible===false).length;
+      empty.innerHTML=hiddenCount
+        ? `No visible positions<br/><span style="font-weight:600">${hiddenCount} vacant outside-budget position${hiddenCount===1?'':'s'} retained in data</span>`
+        : 'Truck added<br/>No positions assigned yet';
+      stack.appendChild(empty);
+    }
+    if(A) A.refresh();
+  }
+
+  function enhanceAll(){
+    document.querySelectorAll('#area-rocklea-fleet-team .added-truck-v15').forEach(enhanceTruck);
+  }
+
+  function ensurePositionModal(){
+    let modal=document.getElementById('addTruckPositionModalV17');
+    if(modal) return modal;
+    modal=document.createElement('div');
+    modal.id='addTruckPositionModalV17';modal.className='bb-v17-modal';
+    modal.innerHTML=`
+      <div class="bb-v17-dialog" role="dialog" aria-modal="true" aria-labelledby="addTruckPositionTitleV17">
+        <div class="bb-v17-head"><h3 id="addTruckPositionTitleV17">Add Position to Truck</h3></div>
+        <div class="bb-v17-body">
+          <div class="bb-v17-grid">
+            <div class="bb-v17-field"><label>Role title</label><select id="truckPosRoleV17"><option>Truck Driver</option><option>Driver Trainer</option><option>Offsider</option><option value="__custom__">Other / Custom</option></select></div>
+            <div class="bb-v17-field" id="truckPosCustomWrapV17" style="display:none"><label>Custom role title</label><input id="truckPosCustomRoleV17" maxlength="70" placeholder="Enter role title"/></div>
+            <div class="bb-v17-field"><label>Approved FTE</label><input id="truckPosFteV17" type="number" min="0" max="2" step="0.1" value="1"/></div>
+            <div class="bb-v17-field"><label>Employment type</label><select id="truckPosEmploymentV17"><option>Full Time</option><option>Part Time</option><option>Casual</option><option>Permanent</option></select></div>
+            <div class="bb-v17-field"><label>Establishment type</label><select id="truckPosEstablishmentV17"><option>Standard</option><option>Cover</option></select></div>
+            <div class="bb-v17-field"><label>Budget status</label><select id="truckPosBudgetV17"><option value="Approved Budgeted FTE">Approved Budgeted FTE</option><option value="Outside Approved FTE">Outside Approved Budget</option></select></div>
+          </div>
+          <div class="bb-v17-note"><strong>Budget status matters.</strong><br/>Choose <strong>Approved Budgeted FTE</strong> only where the position has been approved into the establishment. Otherwise choose <strong>Outside Approved Budget</strong>. Approved positions remain on the chart when vacant. Outside-budget positions are hidden after their assignment ends, while the backend record is retained.</div>
+          <div id="truckPosErrorV17" class="bb-v17-error"></div>
+          <div class="bb-v17-actions"><button type="button" class="bb-v17-cancel" id="truckPosCancelV17">Cancel</button><button type="button" class="bb-v17-save" id="truckPosSaveV17">Add Position</button></div>
+        </div>
+      </div>`;
+    document.body.appendChild(modal);
+    const role=modal.querySelector('#truckPosRoleV17');
+    role.addEventListener('change',()=>{modal.querySelector('#truckPosCustomWrapV17').style.display=role.value==='__custom__'?'block':'none';});
+    modal.querySelector('#truckPosCancelV17').addEventListener('click',()=>{modal.classList.remove('open');addPositionVehicleId='';});
+    modal.addEventListener('click',e=>{if(e.target===modal){modal.classList.remove('open');addPositionVehicleId='';}});
+    modal.querySelector('#truckPosSaveV17').addEventListener('click',savePosition);
+    return modal;
+  }
+
+  function openAddPosition(vehicleId){
+    if(window.BB_REQUIRE_EDITOR&&!window.BB_REQUIRE_EDITOR()) return;
+    const rec=vehicleRecord(vehicleId);if(!rec){toastV17('Added truck record not found.');return;}
+    addPositionVehicleId=vehicleId;
+    const m=ensurePositionModal();
+    m.querySelector('#addTruckPositionTitleV17').textContent=`Add Position — ${rec.cluster} · ${rec.truckNumber}`;
+    m.querySelector('#truckPosRoleV17').value='Truck Driver';
+    m.querySelector('#truckPosCustomRoleV17').value='';
+    m.querySelector('#truckPosCustomWrapV17').style.display='none';
+    m.querySelector('#truckPosFteV17').value='1';
+    m.querySelector('#truckPosEmploymentV17').value='Full Time';
+    m.querySelector('#truckPosEstablishmentV17').value='Standard';
+    m.querySelector('#truckPosBudgetV17').value='Approved Budgeted FTE';
+    m.querySelector('#truckPosErrorV17').textContent='';
+    m.classList.add('open');
+  }
+
+  function savePosition(){
+    const m=ensurePositionModal();const err=m.querySelector('#truckPosErrorV17');
+    const rec=vehicleRecord(addPositionVehicleId);const A=api();
+    if(!rec||!A){err.textContent='Truck position controls are not ready. Please reload the page.';return;}
+    const roleChoice=m.querySelector('#truckPosRoleV17').value;
+    const roleTitle=roleChoice==='__custom__'?m.querySelector('#truckPosCustomRoleV17').value.trim():roleChoice;
+    const approvedFTE=Number(m.querySelector('#truckPosFteV17').value);
+    if(!roleTitle){err.textContent='Enter a role title.';return;}
+    if(!Number.isFinite(approvedFTE)||approvedFTE<0){err.textContent='Enter a valid FTE value.';return;}
+    const created=A.create({
+      vehicleId:rec.vehicleId,cluster:rec.cluster,truckNumber:rec.truckNumber,roleTitle,approvedFTE,
+      establishmentType:m.querySelector('#truckPosEstablishmentV17').value,
+      approvedEmploymentType:m.querySelector('#truckPosEmploymentV17').value,
+      budgetStatus:m.querySelector('#truckPosBudgetV17').value
+    });
+    m.classList.remove('open');addPositionVehicleId='';
+    if(window.BB_RENDER_ADDED_TRUCKS_V15) window.BB_RENDER_ADDED_TRUCKS_V15();
+    toastV17(`${created.positionId} added to ${rec.truckNumber}. ${created.budgetStatus==='Outside Approved FTE'?'Flagged OUTSIDE APPROVED BUDGET.':'Approved budgeted position retained when vacant.'}`);
+  }
+
+  function ensureDeleteModal(){
+    let m=document.getElementById('deleteTruckModalV17');if(m) return m;
+    m=document.createElement('div');m.id='deleteTruckModalV17';m.className='bb-v17-modal';
+    m.innerHTML=`<div class="bb-v17-dialog" role="dialog" aria-modal="true"><div class="bb-v17-head"><h3 id="deleteTruckTitleV17">Delete Added Truck</h3></div><div class="bb-v17-body"><div class="bb-v17-note"><strong>Operations Manager approval reminder</strong><br/>Deleting a truck changes the Rocklea Fleet structure shown on this chart. Please be very sure the truck should be removed. Prior advisement or approval from the <strong>Operations Manager</strong> is required.</div><label class="bb-v17-ack"><input id="deleteTruckAckV17" type="checkbox"/><span>I confirm this truck deletion has been advised to or approved by the Operations Manager.</span></label><div id="deleteTruckErrorV17" class="bb-v17-error"></div><div class="bb-v17-actions"><button type="button" class="bb-v17-cancel" id="deleteTruckCancelV17">Cancel</button><button type="button" class="bb-v17-danger" id="deleteTruckConfirmV17" disabled>Delete Added Truck</button></div></div></div>`;
+    document.body.appendChild(m);
+    const ack=m.querySelector('#deleteTruckAckV17'),del=m.querySelector('#deleteTruckConfirmV17');
+    ack.addEventListener('change',()=>{del.disabled=!ack.checked;});
+    m.querySelector('#deleteTruckCancelV17').addEventListener('click',()=>{m.classList.remove('open');deleteVehicleId='';});
+    m.addEventListener('click',e=>{if(e.target===m){m.classList.remove('open');deleteVehicleId='';}});
+    del.addEventListener('click',deleteTruck);
+    return m;
+  }
+
+  function openDeleteTruck(vehicleId){
+    if(window.BB_REQUIRE_EDITOR&&!window.BB_REQUIRE_EDITOR()) return;
+    const rec=vehicleRecord(vehicleId),A=api();if(!rec||!A){toastV17('Added truck record not found.');return;}
+    const check=A.canDeleteVehicle(vehicleId);
+    if(!check.ok){
+      toastV17(`Truck cannot be deleted yet: ${check.blockers.join('; ')}. Move/end assignments and keep approved positions in the chart.`);
+      return;
+    }
+    deleteVehicleId=vehicleId;
+    const m=ensureDeleteModal();
+    m.querySelector('#deleteTruckTitleV17').textContent=`Delete Added Truck — ${rec.cluster} · ${rec.truckNumber}`;
+    m.querySelector('#deleteTruckAckV17').checked=false;
+    m.querySelector('#deleteTruckConfirmV17').disabled=true;
+    m.querySelector('#deleteTruckErrorV17').textContent='';
+    m.classList.add('open');
+  }
+
+  function deleteTruck(){
+    const rec=vehicleRecord(deleteVehicleId),A=api(),m=ensureDeleteModal();
+    if(!rec||!A){m.querySelector('#deleteTruckErrorV17').textContent='Added truck record not found.';return;}
+    const check=A.canDeleteVehicle(deleteVehicleId);
+    if(!check.ok){m.querySelector('#deleteTruckErrorV17').textContent=check.blockers.join('; ');return;}
+    A.retireVehiclePositions(deleteVehicleId);
+    const s=readState();const item=(s.addedVehicles||[]).find(v=>v&&v.vehicleId===deleteVehicleId);
+    const now=new Date().toISOString();
+    if(item){item.active=false;item.deletedAt=now;item.updatedAt=now;item.deletionApprovalAcknowledged=true;}
+    if(!Array.isArray(s.vehicleChanges)) s.vehicleChanges=[];
+    s.vehicleChanges.push({vehicleId:deleteVehicleId,cluster:rec.cluster,action:'Delete Added Truck',oldTruckNumber:rec.truckNumber,newTruckNumber:'',approvalAcknowledged:true,changedAt:now,dataRetentionStatus:'Retained'});
+    writeState(s);
+    m.classList.remove('open');const label=rec.truckNumber;deleteVehicleId='';
+    if(window.BB_RENDER_ADDED_TRUCKS_V15) window.BB_RENDER_ADDED_TRUCKS_V15();
+    toastV17(`Added truck ${label} removed from the chart. Retained records remain in backend data.`);
+  }
+
+  const observer=new MutationObserver(()=>requestAnimationFrame(enhanceAll));
+  function init(){
+    enhanceAll();
+    const area=document.getElementById('area-rocklea-fleet-team');
+    if(area) observer.observe(area,{childList:true,subtree:true});
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init,{once:true}); else init();
+  window.addEventListener('bb-access-ready',()=>requestAnimationFrame(enhanceAll));
+})();
+</script>
+
+</body>
 </html>
