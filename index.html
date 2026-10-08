@@ -5982,6 +5982,94 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
   display:inline-flex !important;
 }
 </style>
+
+<style id="bb-v20-compact-legend">
+/* Compact Rocklea Fleet colour/status key. Colours intentionally match live chart status colours. */
+.compact-status-key{
+  max-width:1280px !important;
+  margin:10px auto 0 !important;
+  padding:10px 14px !important;
+  box-sizing:border-box !important;
+  background:#F8FAF7 !important;
+  border:1px solid #9FC7AB !important;
+  overflow:visible !important;
+}
+.compact-status-key .legend-top{
+  display:grid !important;
+  grid-template-columns:repeat(6,minmax(0,1fr)) !important;
+  gap:8px !important;
+  align-items:center !important;
+}
+.compact-status-key .legend-item{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:7px !important;
+  min-width:0 !important;
+  text-align:left !important;
+}
+.compact-status-key .legend-chip{
+  width:58px !important;
+  height:48px !important;
+  min-width:58px !important;
+  min-height:48px !important;
+  margin:0 !important;
+  padding:4px !important;
+  border-radius:3px !important;
+  font-size:9px !important;
+  line-height:1.05 !important;
+  font-weight:800 !important;
+  letter-spacing:.01em !important;
+  box-sizing:border-box !important;
+  white-space:nowrap !important;
+  word-break:normal !important;
+  overflow-wrap:normal !important;
+}
+/* Exact status colours used by the Rocklea Fleet chart. */
+.compact-status-key .legend-chip.type-full{background:#43652A !important;color:#FFFFFF !important;border:1px solid #43652A !important;}
+.compact-status-key .legend-chip.type-half{background:#182E80 !important;color:#FFFFFF !important;border:1px solid #182E80 !important;}
+.compact-status-key .legend-chip.type-casual{background:#8B4B14 !important;color:#FFFFFF !important;border:1px solid #8B4B14 !important;}
+.compact-status-key .legend-chip.type-open{background:#E6F0F9 !important;color:#2B5CA6 !important;border:1px solid #7FA7E0 !important;}
+.compact-status-key .legend-chip.type-outside{background:#A97808 !important;color:#FFFFFF !important;border:1px solid #A97808 !important;}
+.compact-status-key .legend-chip.type-mismatch{background:#B52F2A !important;color:#FFFFFF !important;border:1px solid #B52F2A !important;}
+.compact-status-key .legend-copy{
+  max-width:96px !important;
+  margin:0 !important;
+  font-size:10px !important;
+  line-height:1.12 !important;
+  color:#263128 !important;
+  text-align:left !important;
+}
+.compact-status-key .legend-bottom{
+  display:grid !important;
+  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+  gap:8px 16px !important;
+  margin-top:8px !important;
+  padding-top:7px !important;
+  border-top:1px solid #D7E5DA !important;
+}
+.compact-status-key .legend-inline{
+  display:flex !important;
+  align-items:center !important;
+  gap:6px !important;
+  font-size:10px !important;
+  line-height:1.15 !important;
+  min-width:0 !important;
+}
+.compact-status-key .legend-text{font-weight:800 !important;white-space:nowrap !important;}
+.compact-status-key .legend-text.purple{color:#7141C6 !important;}
+.compact-status-key .legend-text.grey{color:#66736A !important;}
+.compact-status-key .legend-text.green{color:#00954A !important;}
+.compact-status-key .legend-text.brown{color:#8B4B14 !important;}
+@media(max-width:1050px){
+  .compact-status-key .legend-top{grid-template-columns:repeat(3,minmax(0,1fr)) !important;}
+  .compact-status-key .legend-bottom{grid-template-columns:repeat(2,minmax(0,1fr)) !important;}
+}
+@media(max-width:650px){
+  .compact-status-key .legend-top{grid-template-columns:repeat(2,minmax(0,1fr)) !important;}
+  .compact-status-key .legend-bottom{grid-template-columns:1fr !important;}
+}
+</style>
 </head>
 <body>
 <header>
@@ -7992,38 +8080,20 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
 <div class="additional-role-heading">Additional Roles · Outside Approved Budget</div>
 <div class="additional-role-grid"></div>
 </section></div>
-<div class="org-legend">
+<div class="org-legend compact-status-key" aria-label="Rocklea Fleet chart colour key">
 <div class="legend-top">
-<div class="legend-item">
-<div class="legend-chip type-full">FULL<br/>TIME</div>
-<div class="legend-copy">Full Time employment type</div>
-</div>
-<div class="legend-item">
-<div class="legend-chip type-half">PART<br/>TIME</div>
-<div class="legend-copy">Part Time employment type. Dark blue is used for Part Time roles in the org chart.</div>
-</div>
-<div class="legend-item">
-<div class="legend-chip type-casual">CASUAL<br/>RELIEF<br/>POOL</div>
-<div class="legend-copy">Assigned casual backup / relief position; vacant approved roles display as OPEN POSITION</div>
-</div>
-<div class="legend-item">
-<div class="legend-chip type-open">OPEN<br/>POSITION</div>
-<div class="legend-copy">Approved budgeted position remains on the org chart when vacant and can be refilled</div>
-</div>
-<div class="legend-item">
-<div class="legend-chip type-outside">OUTSIDE<br/>APPROVED<br/>BUDGET</div>
-<div class="legend-copy">Additional Back Up Driver or Back Up Offsider role not in approved budget; shown only while assigned and hidden from the org chart when vacant (record retained in data)</div>
-</div>
-<div class="legend-item">
-<div class="legend-chip type-mismatch">ROLE<br/>MISMATCH</div>
-<div class="legend-copy">Person is assigned, but their actual role does not match the position role</div>
-</div>
+<div class="legend-item"><div class="legend-chip type-full">FULL<br/>TIME</div><div class="legend-copy">Full Time</div></div>
+<div class="legend-item"><div class="legend-chip type-half">PART<br/>TIME</div><div class="legend-copy">Part Time</div></div>
+<div class="legend-item"><div class="legend-chip type-casual">CASUAL<br/>RELIEF</div><div class="legend-copy">Casual backup / relief</div></div>
+<div class="legend-item"><div class="legend-chip type-open">OPEN<br/>POSITION</div><div class="legend-copy">Approved &amp; vacant</div></div>
+<div class="legend-item"><div class="legend-chip type-outside">OUTSIDE<br/>BUDGET</div><div class="legend-copy">Additional unbudgeted role</div></div>
+<div class="legend-item"><div class="legend-chip type-mismatch">ROLE<br/>MISMATCH</div><div class="legend-copy">Assigned role differs</div></div>
 </div>
 <div class="legend-bottom">
-<div class="legend-inline"><span class="legend-text purple">NAME (LABOUR HIRE)</span><span>External worker supplied through a labour hire provider</span></div>
-<div class="legend-inline"><span class="legend-text grey">VACANT</span><span>No person is currently assigned to the position</span></div>
-<div class="legend-inline"><span class="legend-text green">ASSIGNED</span><span>A person is currently assigned to the position</span></div>
-<div class="legend-inline"><span class="legend-text brown">CASUAL</span><span>BetaBoard employee engaged on a casual employment type</span></div>
+<div class="legend-inline"><span class="legend-text purple">LABOUR HIRE</span><span>External worker</span></div>
+<div class="legend-inline"><span class="legend-text grey">VACANT</span><span>No person assigned</span></div>
+<div class="legend-inline"><span class="legend-text green">ASSIGNED</span><span>Person assigned</span></div>
+<div class="legend-inline"><span class="legend-text brown">CASUAL</span><span>Casual employment</span></div>
 </div>
 </div>
 </div>
