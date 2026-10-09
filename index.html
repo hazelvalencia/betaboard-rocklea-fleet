@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!-- Rocklea Fleet v30 EMPTY: starts with no person assigned to any position; fresh local storage namespace -->
+
 
 <html lang="en">
 <head>
@@ -4245,6 +4247,69 @@ header{
 }
 .assignment-role-check[hidden]{display:none !important;}
 
+
+/* V22 — person availability visibility. This is a secondary operational flag and does
+   not override employment type, budget status or role-mismatch colours. */
+.assignment-availability-note-v22{
+  margin-top:8px;
+  color:#56635A;
+  font-size:9px;
+  line-height:1.35;
+}
+.availability-fields-v22[hidden]{display:none !important;}
+.availability-fields-v22{
+  margin-top:10px;
+  padding:10px;
+  border:1px solid #E3B787;
+  border-left:4px solid #D56A12;
+  border-radius:7px;
+  background:#FFF7EF;
+}
+.limited-availability-pill-v22{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-height:18px;
+  padding:3px 6px;
+  box-sizing:border-box;
+  border:1px solid #E2A066;
+  border-radius:5px;
+  background:#FCE3CB;
+  color:#9A4608;
+  font-size:7.4px;
+  line-height:1.05;
+  font-weight:900;
+  letter-spacing:.035em;
+  text-transform:uppercase;
+}
+.approved-site-card-v47 .limited-availability-pill-v22{
+  grid-column:1/-1;
+  margin-top:-1px;
+  font-size:5.8px;
+  min-height:14px;
+  padding:2px 3px;
+}
+.legend-text.availability-v22{color:#B9540B;}
+
+
+/* V23 — restricted labour-cost input. Rate is editor-only, never rendered on the
+   org chart, and is intentionally excluded from local/browser state. */
+.sensitive-rate-section-v23{display:none !important;}
+body.bb-editor-enabled .sensitive-rate-section-v23{display:block !important;}
+.restricted-rate-note-v23{
+  margin-top:8px;
+  padding:8px 10px;
+  border:1px solid #D8DED9;
+  border-left:4px solid #56635A;
+  border-radius:7px;
+  background:#F7F9F7;
+  color:#465149;
+  font-size:9px;
+  line-height:1.4;
+}
+.restricted-rate-note-v23 strong{color:#26382D;}
+
 /* ---------------- Generic Grid Rules ---------------- */
 .top-card-row-v46{
   display:flex;
@@ -5500,7 +5565,6 @@ header{
   display:none !important;
 }
 </style><style id="bb-v57-assignment-write-connection">
-#employeeEmailField small{color:#738078;font-weight:500;}
 </style><style id="bb-v59-history-clear-style">
 #assignmentHistorySection .position-history-summary{
   display:flex;
@@ -6068,6 +6132,352 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
 @media(max-width:650px){
   .compact-status-key .legend-top{grid-template-columns:repeat(2,minmax(0,1fr)) !important;}
   .compact-status-key .legend-bottom{grid-template-columns:1fr !important;}
+}
+</style>
+
+<style id="bb-v27-workforce-legend">
+/* V27 — three-part workforce planning legend matching the card visual language. */
+.workforce-legend-v27{
+  max-width:1280px !important;
+  margin:10px auto 0 !important;
+  padding:10px 12px !important;
+  display:grid !important;
+  grid-template-columns:1.05fr 1.05fr .9fr !important;
+  gap:0 !important;
+  background:#F8FAF7 !important;
+  border:1px solid #9FC7AB !important;
+  box-sizing:border-box !important;
+}
+.workforce-legend-v27 .legend-section-v27{
+  min-width:0 !important;
+  padding:0 14px !important;
+}
+.workforce-legend-v27 .legend-section-v27:first-child{padding-left:4px !important;}
+.workforce-legend-v27 .legend-section-v27:last-child{padding-right:4px !important;}
+.workforce-legend-v27 .legend-section-v27 + .legend-section-v27{
+  border-left:1px solid #C9DDCE !important;
+}
+.workforce-legend-v27 .legend-section-head-v27{
+  margin-bottom:8px !important;
+}
+.workforce-legend-v27 .legend-section-title-v27{
+  font-size:12px !important;
+  line-height:1.1 !important;
+  font-weight:800 !important;
+  color:#174C35 !important;
+}
+.workforce-legend-v27 .legend-section-sub-v27{
+  margin-top:2px !important;
+  font-size:9px !important;
+  line-height:1.15 !important;
+  color:#68736C !important;
+}
+.workforce-legend-v27 .legend-grid-v27{
+  display:grid !important;
+  gap:6px 14px !important;
+}
+.workforce-legend-v27 .two-col-v27{
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+}
+.workforce-legend-v27 .legend-row-v27{
+  display:grid !important;
+  grid-template-columns:24px minmax(0,1fr) !important;
+  gap:7px !important;
+  align-items:center !important;
+  min-width:0 !important;
+}
+.workforce-legend-v27 .legend-row-v27 strong,
+.workforce-legend-v27 .legend-status-row-v27 strong{
+  display:block !important;
+  font-size:9.5px !important;
+  line-height:1.05 !important;
+  font-weight:800 !important;
+}
+.workforce-legend-v27 small{
+  display:block !important;
+  margin-top:1px !important;
+  font-size:8.5px !important;
+  line-height:1.1 !important;
+  color:#5F6962 !important;
+  font-weight:500 !important;
+}
+.workforce-legend-v27 .legend-swatch-v27{
+  width:22px !important;
+  height:22px !important;
+  border-radius:4px !important;
+  display:block !important;
+  box-sizing:border-box !important;
+}
+.workforce-legend-v27 .legend-swatch-v27.full{background:#43652A !important;border:1px solid #43652A !important;}
+.workforce-legend-v27 .legend-swatch-v27.part{background:#182E80 !important;border:1px solid #182E80 !important;}
+.workforce-legend-v27 .legend-swatch-v27.casual{background:#8B4B14 !important;border:1px solid #8B4B14 !important;}
+.workforce-legend-v27 .legend-swatch-v27.open{background:#E6F0F9 !important;border:1px solid #7FA7E0 !important;}
+.workforce-legend-v27 .legend-swatch-v27.outside{background:#A97808 !important;border:1px solid #A97808 !important;}
+.workforce-legend-v27 .legend-status-row-v27{
+  min-width:0 !important;
+}
+.workforce-legend-v27 .legend-status-row-v27.wide-v27{grid-column:1 / -1 !important;}
+.workforce-legend-v27 .legend-status-v27.assigned{color:#00954A !important;}
+.workforce-legend-v27 .legend-status-v27.vacant{color:#66736A !important;}
+.workforce-legend-v27 .legend-status-v27.casual{color:#8B4B14 !important;}
+.workforce-legend-v27 .legend-status-v27.labour{color:#7141C6 !important;}
+.workforce-legend-v27 .legend-status-v27.limited{color:#B9540B !important;}
+.workforce-legend-v27 .legend-flags-list-v27{
+  display:grid !important;
+  gap:8px !important;
+}
+.workforce-legend-v27 .legend-flag-row-v27{
+  display:grid !important;
+  grid-template-columns:minmax(112px,auto) minmax(0,1fr) !important;
+  gap:8px !important;
+  align-items:center !important;
+}
+.workforce-legend-v27 .legend-flag-v27{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-height:26px !important;
+  padding:4px 8px !important;
+  border-radius:5px !important;
+  font-size:8.5px !important;
+  line-height:1 !important;
+  font-weight:800 !important;
+  text-align:center !important;
+  white-space:nowrap !important;
+  box-sizing:border-box !important;
+}
+.workforce-legend-v27 .legend-flag-v27.mismatch{
+  background:#FDE9E7 !important;
+  color:#B52F2A !important;
+  border:1px solid #E46A63 !important;
+}
+.workforce-legend-v27 .legend-flag-v27.warning{
+  background:#FFF0DE !important;
+  color:#9A4B00 !important;
+  border:1px solid #E8A452 !important;
+}
+@media(max-width:1050px){
+  .workforce-legend-v27{grid-template-columns:1fr 1fr !important;row-gap:10px !important;}
+  .workforce-legend-v27 .legend-flags-v27{grid-column:1 / -1 !important;border-left:0 !important;border-top:1px solid #C9DDCE !important;padding-top:10px !important;}
+}
+@media(max-width:700px){
+  .workforce-legend-v27{grid-template-columns:1fr !important;}
+  .workforce-legend-v27 .legend-section-v27{border-left:0 !important;border-top:1px solid #C9DDCE !important;padding:10px 4px 0 !important;}
+  .workforce-legend-v27 .legend-section-v27:first-child{border-top:0 !important;padding-top:0 !important;}
+}
+</style>
+<meta name="rocklea-fleet-build" content="v27-three-part-legend"/>
+
+<style id="bb-v25-legend-font-status">
+/* V25 — mirror the legend colours on the assigned-person/status line. */
+.role-card-v46.person-status-assigned-v25 .role-person-v46,
+.approved-site-card-v47.person-status-assigned-v25 .approved-site-person-v47{
+  color:#00954A !important;
+  border-color:#B2D9BE !important;
+}
+.role-card-v46.person-status-vacant-v25 .role-person-v46,
+.approved-site-card-v47.person-status-vacant-v25 .approved-site-person-v47{
+  color:#66736A !important;
+  border-color:#D5E1D8 !important;
+}
+.role-card-v46.person-status-casual-v25 .role-person-v46,
+.approved-site-card-v47.person-status-casual-v25 .approved-site-person-v47{
+  color:#8B4B14 !important;
+  border-color:#D8AE90 !important;
+}
+.role-card-v46.person-status-labour-v25 .role-person-v46,
+.approved-site-card-v47.person-status-labour-v25 .approved-site-person-v47{
+  color:#7141C6 !important;
+  border-color:#C8B8E1 !important;
+}
+.role-card-v46.person-status-limited-v25 .role-person-v46,
+.approved-site-card-v47.person-status-limited-v25 .approved-site-person-v47{
+  color:#B9540B !important;
+  border-color:#E2A46F !important;
+}
+.role-card-v46.person-status-outside-v25 .role-person-v46,
+.approved-site-card-v47.person-status-outside-v25 .approved-site-person-v47{
+  color:#8A6500 !important;
+  border-color:#D9C67E !important;
+}
+.role-card-v46.person-status-mismatch-v25 .role-person-v46,
+.approved-site-card-v47.person-status-mismatch-v25 .approved-site-person-v47{
+  color:#B52F2A !important;
+  border-color:#E3A8A4 !important;
+}
+/* Dynamic backup cards are outside-budget by design; keep mismatch as the higher-priority exception. */
+.role-card-v46.outside-approved-budget:not(.role-mismatch) .role-person-v46{color:#8A6500 !important;}
+.role-card-v46.role-mismatch .role-person-v46{color:#B52F2A !important;}
+</style>
+
+<style id="bb-v26-legend-card-mapping">
+/* V26 — visual legend mapping:
+   - left role/code box carries employment / structural warning colour
+   - role title carries person / assignment-status font colour
+   This deliberately leaves the person/status strip neutral. */
+
+/* Neutralise the V25 colour treatment on the person/status strip. */
+#area-rocklea-fleet-team .role-card-v46 .role-person-v46{
+  color:#4F5F55 !important;
+  border-color:#D3E0D6 !important;
+  background:#FFFFFF !important;
+}
+#area-rocklea-fleet-team .approved-site-card-v47 .approved-site-person-v47{
+  color:#5A685F !important;
+  border-color:#D5E1D8 !important;
+  background:#FFFFFF !important;
+}
+
+/* Lower legend colours now apply to the ROLE TITLE text. */
+#area-rocklea-fleet-team .role-card-v46.person-status-assigned-v25 .role-title-v46,
+#area-rocklea-fleet-team .approved-site-card-v47.person-status-assigned-v25 .approved-site-title-v47{
+  color:#00954A !important;
+}
+#area-rocklea-fleet-team .role-card-v46.person-status-vacant-v25 .role-title-v46,
+#area-rocklea-fleet-team .approved-site-card-v47.person-status-vacant-v25 .approved-site-title-v47{
+  color:#66736A !important;
+}
+#area-rocklea-fleet-team .role-card-v46.person-status-casual-v25 .role-title-v46,
+#area-rocklea-fleet-team .approved-site-card-v47.person-status-casual-v25 .approved-site-title-v47{
+  color:#8B4B14 !important;
+}
+#area-rocklea-fleet-team .role-card-v46.person-status-labour-v25 .role-title-v46,
+#area-rocklea-fleet-team .approved-site-card-v47.person-status-labour-v25 .approved-site-title-v47{
+  color:#7141C6 !important;
+}
+#area-rocklea-fleet-team .role-card-v46.person-status-limited-v25 .role-title-v46,
+#area-rocklea-fleet-team .approved-site-card-v47.person-status-limited-v25 .approved-site-title-v47{
+  color:#B9540B !important;
+}
+#area-rocklea-fleet-team .role-card-v46.person-status-outside-v25 .role-title-v46,
+#area-rocklea-fleet-team .approved-site-card-v47.person-status-outside-v25 .approved-site-title-v47{
+  color:#8A6500 !important;
+}
+#area-rocklea-fleet-team .role-card-v46.person-status-mismatch-v25 .role-title-v46,
+#area-rocklea-fleet-team .approved-site-card-v47.person-status-mismatch-v25 .approved-site-title-v47{
+  color:#B52F2A !important;
+}
+
+/* Top legend colours stay on the left code box.
+   Employment type remains visible even when an approved role is vacant. */
+#area-rocklea-fleet-team .role-card-v46.employment-full-time-v18:not(.role-mismatch):not(.outside-approved-budget) .role-code-v46{
+  background:#43652A !important;
+  border-color:#43652A !important;
+  color:#FFFFFF !important;
+}
+#area-rocklea-fleet-team .role-card-v46.employment-part-time-v18:not(.role-mismatch):not(.outside-approved-budget) .role-code-v46{
+  background:#182E80 !important;
+  border-color:#182E80 !important;
+  color:#FFFFFF !important;
+}
+#area-rocklea-fleet-team .role-card-v46.employment-casual-v18:not(.role-mismatch):not(.outside-approved-budget) .role-code-v46{
+  background:#8B4B14 !important;
+  border-color:#8B4B14 !important;
+  color:#FFFFFF !important;
+}
+/* Structural warning colours take priority on the box. */
+#area-rocklea-fleet-team .role-card-v46.outside-approved-budget:not(.role-mismatch) .role-code-v46,
+#area-rocklea-fleet-team .approved-site-card-v47.outside-approved-budget:not(.role-mismatch) .approved-site-code-v47{
+  background:#A97808 !important;
+  border-color:#A97808 !important;
+  color:#FFFFFF !important;
+}
+#area-rocklea-fleet-team .role-card-v46.role-mismatch .role-code-v46,
+#area-rocklea-fleet-team .approved-site-card-v47.role-mismatch .approved-site-code-v47{
+  background:#B52F2A !important;
+  border-color:#B52F2A !important;
+  color:#FFFFFF !important;
+}
+
+/* Keep the overall open/vacant treatment on the card, not the title/code employment signal. */
+#area-rocklea-fleet-team .role-card-v46.type-open{
+  background:#EEF6FF !important;
+  border-color:#8CB2E9 !important;
+}
+</style>
+
+
+<style id="bb-v28-independent-visual-channels">
+/* V28 — three independent visual channels:
+   1) code square = employment type ONLY
+   2) position title = position/person status ONLY
+   3) exceptions = standalone flag badges ONLY */
+
+/* Employment-type square always wins, including vacancy, outside-budget and mismatch states. */
+#area-rocklea-fleet-team .role-card-v46.employment-full-time-v18 .role-code-v46,
+#area-rocklea-fleet-team .approved-site-card-v47.employment-full-time-v18 .approved-site-code-v47{
+  background:#43652A !important;border-color:#43652A !important;color:#fff !important;
+}
+#area-rocklea-fleet-team .role-card-v46.employment-part-time-v18 .role-code-v46,
+#area-rocklea-fleet-team .approved-site-card-v47.employment-part-time-v18 .approved-site-code-v47{
+  background:#182E80 !important;border-color:#182E80 !important;color:#fff !important;
+}
+#area-rocklea-fleet-team .role-card-v46.employment-casual-v18 .role-code-v46,
+#area-rocklea-fleet-team .approved-site-card-v47.employment-casual-v18 .approved-site-code-v47{
+  background:#8F4A10 !important;border-color:#8F4A10 !important;color:#fff !important;
+}
+
+/* Exception flags must not recolour the title. Status class alone controls title colour. */
+#area-rocklea-fleet-team .role-card-v46.role-mismatch .role-title-v46,
+#area-rocklea-fleet-team .approved-site-card-v47.role-mismatch .approved-site-title-v47,
+#area-rocklea-fleet-team .role-card-v46.outside-approved-budget .role-title-v46,
+#area-rocklea-fleet-team .approved-site-card-v47.outside-approved-budget .approved-site-title-v47{
+  color:inherit;
+}
+#area-rocklea-fleet-team .role-card-v46.person-status-assigned-v25 .role-title-v46,
+#area-rocklea-fleet-team .approved-site-card-v47.person-status-assigned-v25 .approved-site-title-v47{color:#00954A !important;}
+#area-rocklea-fleet-team .role-card-v46.person-status-vacant-v25 .role-title-v46,
+#area-rocklea-fleet-team .approved-site-card-v47.person-status-vacant-v25 .approved-site-title-v47{color:#66736A !important;}
+#area-rocklea-fleet-team .role-card-v46.person-status-casual-v25 .role-title-v46,
+#area-rocklea-fleet-team .approved-site-card-v47.person-status-casual-v25 .approved-site-title-v47{color:#8B4B14 !important;}
+#area-rocklea-fleet-team .role-card-v46.person-status-labour-v25 .role-title-v46,
+#area-rocklea-fleet-team .approved-site-card-v47.person-status-labour-v25 .approved-site-title-v47{color:#7141C6 !important;}
+#area-rocklea-fleet-team .role-card-v46.person-status-limited-v25 .role-title-v46,
+#area-rocklea-fleet-team .approved-site-card-v47.person-status-limited-v25 .approved-site-title-v47{color:#B9540B !important;}
+
+/* Role mismatch is a flag only. Do not turn the full card, code square or title red. */
+#area-rocklea-fleet-team .role-card-v46.role-mismatch:not(.outside-approved-budget){
+  border:1.3px solid var(--bb-border) !important;background:var(--bb-soft) !important;box-shadow:0 2px 7px rgba(20,50,30,.07) !important;
+}
+#area-rocklea-fleet-team .role-card-v46.role-mismatch.type-casual:not(.outside-approved-budget){
+  background:#F8E7DD !important;border-color:#D7A17A !important;
+}
+#area-rocklea-fleet-team .role-card-v46.role-mismatch.outside-approved-budget{
+  border:2px solid #B88A16 !important;background:#FFF7D6 !important;box-shadow:0 0 0 2px rgba(184,138,22,.10) !important;
+}
+#area-rocklea-fleet-team .approved-site-card-v47.role-mismatch{
+  border-color:#8FB999 !important;background:#EAF3E8 !important;box-shadow:1px 1px 0 rgba(0,0,0,.06) !important;
+}
+#area-rocklea-fleet-team .approved-site-card-v47.role-mismatch.is-vacant-approved{
+  border-color:#92B5EA !important;background:#EEF5FD !important;
+}
+
+/* Position/person strip stays neutral; flags carry warnings. */
+#area-rocklea-fleet-team .role-card-v46.role-mismatch .role-person-v46,
+#area-rocklea-fleet-team .approved-site-card-v47.role-mismatch .approved-site-person-v47{
+  color:#4F5F55 !important;border-color:#D3E0D6 !important;background:#fff !important;
+}
+
+/* Legend: outside budget is a flag, not an employment-type square. */
+.legend-flag-v27.outside-v28{background:#FFF1BF;border-color:#C49108;color:#8A6500;}
+</style>
+
+<style id="bb-v29-engagement-type-title-colours">
+/* V29 — position title font colour communicates engagement type ONLY.
+   Direct / vacant = neutral dark grey. Labour hire = purple.
+   Casual, availability, budget and mismatch remain separate labels/flags and do not recolour the title. */
+.workforce-legend-v27 .legend-status-v27.direct-v29{color:#2F3A33 !important;}
+.workforce-legend-v27 .engagement-grid-v29{grid-template-columns:1fr !important;gap:8px !important;}
+
+#area-rocklea-fleet-team .role-card-v46 .role-title-v46,
+#area-rocklea-fleet-team .approved-site-card-v47 .approved-site-title-v47{
+  color:#2F3A33 !important;
+}
+#area-rocklea-fleet-team .role-card-v46.is-labour-hire .role-title-v46,
+#area-rocklea-fleet-team .approved-site-card-v47.is-labour-hire .approved-site-title-v47,
+#area-rocklea-fleet-team .role-card-v46.person-status-labour-v25 .role-title-v46,
+#area-rocklea-fleet-team .approved-site-card-v47.person-status-labour-v25 .approved-site-title-v47{
+  color:#7141C6 !important;
 }
 </style>
 </head>
@@ -8080,21 +8490,41 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
 <div class="additional-role-heading">Additional Roles · Outside Approved Budget</div>
 <div class="additional-role-grid"></div>
 </section></div>
-<div class="org-legend compact-status-key" aria-label="Rocklea Fleet chart colour key">
-<div class="legend-top">
-<div class="legend-item"><div class="legend-chip type-full">FULL<br/>TIME</div><div class="legend-copy">Full Time</div></div>
-<div class="legend-item"><div class="legend-chip type-half">PART<br/>TIME</div><div class="legend-copy">Part Time</div></div>
-<div class="legend-item"><div class="legend-chip type-casual">CASUAL<br/>RELIEF</div><div class="legend-copy">Casual backup / relief</div></div>
-<div class="legend-item"><div class="legend-chip type-open">OPEN<br/>POSITION</div><div class="legend-copy">Approved &amp; vacant</div></div>
-<div class="legend-item"><div class="legend-chip type-outside">OUTSIDE<br/>BUDGET</div><div class="legend-copy">Additional unbudgeted role</div></div>
-<div class="legend-item"><div class="legend-chip type-mismatch">ROLE<br/>MISMATCH</div><div class="legend-copy">Assigned role differs</div></div>
-</div>
-<div class="legend-bottom">
-<div class="legend-inline"><span class="legend-text purple">LABOUR HIRE</span><span>External worker</span></div>
-<div class="legend-inline"><span class="legend-text grey">VACANT</span><span>No person assigned</span></div>
-<div class="legend-inline"><span class="legend-text green">ASSIGNED</span><span>Person assigned</span></div>
-<div class="legend-inline"><span class="legend-text brown">CASUAL</span><span>Casual employment</span></div>
-</div>
+<div class="org-legend workforce-legend-v27" aria-label="Rocklea Fleet workforce planning legend">
+  <section class="legend-section-v27 legend-employment-v27">
+    <div class="legend-section-head-v27">
+      <div class="legend-section-title-v27">Employment Type</div>
+      <div class="legend-section-sub-v27">Small square only</div>
+    </div>
+    <div class="legend-grid-v27 two-col-v27">
+      <div class="legend-row-v27"><span class="legend-swatch-v27 full"></span><div><strong>Full Time</strong><small>Green square</small></div></div>
+      <div class="legend-row-v27"><span class="legend-swatch-v27 part"></span><div><strong>Part Time</strong><small>Dark blue square</small></div></div>
+      <div class="legend-row-v27"><span class="legend-swatch-v27 casual"></span><div><strong>Casual Relief</strong><small>Brown square</small></div></div>
+    </div>
+  </section>
+
+  <section class="legend-section-v27 legend-status-v27">
+    <div class="legend-section-head-v27">
+      <div class="legend-section-title-v27">Engagement Type</div>
+      <div class="legend-section-sub-v27">Position title font colour</div>
+    </div>
+    <div class="legend-grid-v27 engagement-grid-v29">
+      <div class="legend-status-row-v27"><strong class="legend-status-v27 direct-v29">DIRECT EMPLOYEE</strong><small>Dark grey · Employed directly by BetaBoard</small></div>
+      <div class="legend-status-row-v27"><strong class="legend-status-v27 labour">LABOUR HIRE</strong><small>Purple · Supplied through a labour hire agency</small></div>
+    </div>
+  </section>
+
+  <section class="legend-section-v27 legend-flags-v27">
+    <div class="legend-section-head-v27">
+      <div class="legend-section-title-v27">Flags &amp; Exceptions</div>
+      <div class="legend-section-sub-v27">Separate warning badges only</div>
+    </div>
+    <div class="legend-flags-list-v27">
+      <div class="legend-flag-row-v27"><span class="legend-flag-v27 outside-v28">OUTSIDE APPROVED BUDGET</span><small>Additional / unbudgeted role</small></div>
+      <div class="legend-flag-row-v27"><span class="legend-flag-v27 mismatch">ROLE MISMATCH</span><small>Assigned role differs</small></div>
+      <div class="legend-flag-row-v27"><span class="legend-flag-v27 warning">EXCEPTION / WARNING</span><small>Future warning status</small></div>
+    </div>
+  </section>
 </div>
 </div>
 </section>
@@ -8133,11 +8563,49 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
 <option value="Delivery Performance Manager"></option>
 </datalist>
 </label>
-<label id="employeeEmailField">
-<span>Employee email <small>(required for direct employees)</small></span>
-<input id="assignmentEmployeeEmail" placeholder="name@betaboard.com.au" type="email"/>
-</label></div>
+</div>
 <div class="assignment-role-check" hidden="" id="assignmentRoleMismatchWarning"></div>
+</div>
+<div class="assignment-section sensitive-rate-section-v23" id="sensitiveRateSectionV23">
+<div class="assignment-section-title">Restricted Labour Cost</div>
+<div class="form-grid">
+<label>
+<span>Hourly labour rate ($/hr) <small>(restricted)</small></span>
+<input id="assignmentHourlyRate" min="0" step="0.01" inputmode="decimal" autocomplete="off" placeholder="e.g. 38.50" type="number"/>
+<small>Enter the current hourly labour rate for labour-cost reporting.</small>
+</label>
+</div>
+<div class="restricted-rate-note-v23"><strong>Sensitive:</strong> this rate is never shown on the org chart and is not stored in browser/local storage. When the Microsoft List connection is active, it is sent only with the save request.</div>
+</div>
+<div class="assignment-section">
+<div class="assignment-section-title">Availability</div>
+<div class="form-grid">
+<label>
+<span>Full availability? *</span>
+<select id="assignmentFullAvailability" required="">
+<option value="Yes">Yes</option>
+<option value="No">No</option>
+</select>
+<small>Yes means available for all hours required by this position.</small>
+</label>
+</div>
+<div class="availability-fields-v22" hidden="" id="limitedAvailabilityFieldsV22">
+<div class="form-grid">
+<label>
+<span>Available days *</span>
+<input id="assignmentAvailabilityDays" placeholder="e.g. Monday–Thursday" type="text"/>
+</label>
+<label>
+<span>Hours available per week *</span>
+<input id="assignmentAvailabilityHours" min="0.5" max="80" step="0.5" placeholder="e.g. 24" type="number"/>
+</label>
+<label class="full-span">
+<span>Availability / restrictions <small>(optional)</small></span>
+<textarea id="assignmentAvailabilityDetails" placeholder="e.g. Available 6:00 am–2:00 pm Monday–Thursday; unavailable Fridays" rows="2"></textarea>
+</label>
+</div>
+<div class="assignment-availability-note-v22"><strong>LIMITED AVAILABILITY</strong> will be shown on the org chart so leaders can see that the position is occupied but does not have full-hours coverage.</div>
+</div>
 </div>
 <div class="assignment-section">
 <div class="assignment-section-title">Workforce Establishment &amp; Budget</div>
@@ -8249,7 +8717,7 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
 (() => {
   const POSITIONS = {"POS-001": {"id": "POS-001", "title": "Chief Executive Officer", "code": "COO", "area": "Main Organisation", "department": "Executive", "location": "Head Office", "parentId": "", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-002": {"id": "POS-002", "title": "Director", "code": "D", "area": "Main Organisation", "department": "Executive", "location": "Head Office", "parentId": "POS-001", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-003": {"id": "POS-003", "title": "Chief Financial Officer", "code": "CFO", "area": "Main Organisation", "department": "Executive", "location": "Head Office", "parentId": "POS-001", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-004": {"id": "POS-004", "title": "General Manager", "code": "GM", "area": "Main Organisation", "department": "Executive", "location": "Head Office", "parentId": "POS-001", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-005": {"id": "POS-005", "title": "Executive Assistant", "code": "EA", "area": "Main Organisation", "department": "Executive", "location": "Head Office", "parentId": "POS-001", "fte": 0.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-006": {"id": "POS-006", "title": "Sales Manager", "code": "SM", "area": "Main Organisation", "department": "Sales", "location": "Head Office", "parentId": "POS-001", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Vacant", "budgetStatus": "Approved Budgeted FTE"}, "POS-007": {"id": "POS-007", "title": "Operations Support and Executive Manager", "code": "OSEM", "area": "Main Organisation", "department": "Corporate Services", "location": "Head Office", "parentId": "POS-003", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-008": {"id": "POS-008", "title": "Management Accountant", "code": "MA", "area": "Main Organisation", "department": "Finance", "location": "Head Office", "parentId": "POS-003", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-009": {"id": "POS-009", "title": "Accounts Payable Officer", "code": "AP", "area": "Main Organisation", "department": "Finance", "location": "Head Office", "parentId": "POS-003", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-010": {"id": "POS-010", "title": "Accounts Receivable Officer", "code": "AR", "area": "Main Organisation", "department": "Finance", "location": "Head Office", "parentId": "POS-003", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-011": {"id": "POS-011", "title": "Business Analyst", "code": "BA", "area": "Main Organisation", "department": "Corporate Services", "location": "Head Office", "parentId": "POS-003", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-012": {"id": "POS-012", "title": "Human Resource and WHS Manager", "code": "HR", "area": "Main Organisation", "department": "People & Safety", "location": "Head Office", "parentId": "POS-004", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-013": {"id": "POS-013", "title": "Senior Account Manager", "code": "SAM", "area": "Main Organisation", "department": "Sales", "location": "Head Office", "parentId": "POS-004", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-014": {"id": "POS-014", "title": "Account Manager", "code": "AM", "area": "Main Organisation", "department": "Sales", "location": "Head Office", "parentId": "POS-004", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-015": {"id": "POS-015", "title": "Account Manager", "code": "AM", "area": "Main Organisation", "department": "Sales", "location": "Head Office", "parentId": "POS-004", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-016": {"id": "POS-016", "title": "Account Manager", "code": "AM", "area": "Main Organisation", "department": "Sales", "location": "Head Office", "parentId": "POS-004", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-017": {"id": "POS-017", "title": "Account Manager", "code": "AM", "area": "Main Organisation", "department": "Sales", "location": "Head Office", "parentId": "POS-004", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-018": {"id": "POS-018", "title": "Account Manager", "code": "AM", "area": "Main Organisation", "department": "Sales", "location": "Head Office", "parentId": "POS-004", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-019": {"id": "POS-019", "title": "Operations Manager", "code": "OM", "area": "Main Organisation", "department": "Operations", "location": "Head Office", "parentId": "POS-004", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-020": {"id": "POS-020", "title": "Head Office Accounts Admin", "code": "AA", "area": "Main Organisation", "department": "Operations", "location": "Head Office", "parentId": "POS-019", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-021": {"id": "POS-021", "title": "Customer Service Supervisor", "code": "CS", "area": "Main Organisation", "department": "Operations", "location": "Head Office", "parentId": "POS-019", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-022": {"id": "POS-022", "title": "Customer Service Officer", "code": "CS", "area": "Main Organisation", "department": "Operations", "location": "Head Office", "parentId": "POS-019", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-023": {"id": "POS-023", "title": "Dispatch Manager", "code": "DM", "area": "Main Organisation", "department": "Operations", "location": "Head Office", "parentId": "POS-019", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-024": {"id": "POS-024", "title": "Dispatch Coordinator", "code": "DC", "area": "Main Organisation", "department": "Operations", "location": "Head Office", "parentId": "POS-019", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-025": {"id": "POS-025", "title": "Dispatch Coordinator", "code": "DC", "area": "Main Organisation", "department": "Operations", "location": "Head Office", "parentId": "POS-019", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-026": {"id": "POS-026", "title": "Fleet and Facilities Manager", "code": "FM", "area": "Main Organisation", "department": "Operations", "location": "Head Office", "parentId": "POS-019", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-027": {"id": "POS-027", "title": "Warehouse Manager (Inventory)", "code": "WIM", "area": "Main Organisation", "department": "Operations", "location": "Head Office", "parentId": "POS-019", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-028": {"id": "POS-028", "title": "Invertory Officer", "code": "IO", "area": "Main Organisation", "department": "Operations", "location": "Head Office", "parentId": "POS-027", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-029": {"id": "POS-029", "title": "ICT Support Technician", "code": "ICT", "area": "Main Organisation", "department": "Operations", "location": "Head Office", "parentId": "POS-027", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-030": {"id": "POS-030", "title": "Store Manager - North Lakes", "code": "STM", "area": "Main Organisation", "department": "Operations", "location": "Head Office", "parentId": "POS-019", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-031": {"id": "POS-031", "title": "Store Manager - Brendale", "code": "STM", "area": "Main Organisation", "department": "Operations", "location": "Head Office", "parentId": "POS-019", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-032": {"id": "POS-032", "title": "Store Manager - Loganholme", "code": "STM", "area": "Main Organisation", "department": "Operations", "location": "Head Office", "parentId": "POS-019", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-033": {"id": "POS-033", "title": "Store Manager - Loganholme", "code": "STM", "area": "Main Organisation", "department": "Operations", "location": "Head Office", "parentId": "POS-019", "fte": 1.0, "employmentType": "Casual", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-034": {"id": "POS-034", "title": "Store Manager - Ormeau", "code": "STM", "area": "Main Organisation", "department": "Operations", "location": "Head Office", "parentId": "POS-019", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-035": {"id": "POS-035", "title": "Warehouse Manager - Rocklea", "code": "STM", "area": "Main Organisation", "department": "Operations", "location": "Head Office", "parentId": "POS-019", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-036": {"id": "POS-036", "title": "Delivery Performance Manager", "code": "DPM", "area": "Main Organisation", "department": "Operations", "location": "Head Office", "parentId": "POS-019", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-037": {"id": "POS-037", "title": "Warehouse Area Supervisor", "code": "WAS", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-038": {"id": "POS-038", "title": "Warehouse Assistant", "code": "WA", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-039": {"id": "POS-039", "title": "Forklift Operator", "code": "FO", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-040": {"id": "POS-040", "title": "Forklift Operator", "code": "FO", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-041": {"id": "POS-041", "title": "Forklift Operator", "code": "FO", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-042": {"id": "POS-042", "title": "Forklift Operator", "code": "FO", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 0.5, "employmentType": "Part Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-043": {"id": "POS-043", "title": "Forklift Operator", "code": "FO", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 0.0, "employmentType": "Casual", "positionStatus": "Casual Relief Pool", "budgetStatus": "Approved Budgeted FTE"}, "POS-044": {"id": "POS-044", "title": "Warehouse Area Supervisor", "code": "WAS", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-045": {"id": "POS-045", "title": "Warehouse Assistant", "code": "WA", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-046": {"id": "POS-046", "title": "Warehouse Assistant", "code": "WA", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-047": {"id": "POS-047", "title": "Warehouse Assistant", "code": "WA", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-048": {"id": "POS-048", "title": "Warehouse Assistant", "code": "WA", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-049": {"id": "POS-049", "title": "Forklift Operator", "code": "FO", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 0.5, "employmentType": "Part Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-050": {"id": "POS-050", "title": "Forklift Operator", "code": "FO", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 0.0, "employmentType": "Casual", "positionStatus": "Casual Relief Pool", "budgetStatus": "Approved Budgeted FTE"}, "POS-051": {"id": "POS-051", "title": "Warehouse Area Supervisor", "code": "WAS", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-052": {"id": "POS-052", "title": "Forklift Operator", "code": "FO", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-053": {"id": "POS-053", "title": "Forklift Operator", "code": "FO", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-054": {"id": "POS-054", "title": "Forklift Operator", "code": "FO", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-055": {"id": "POS-055", "title": "Forklift Operator", "code": "FO", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 0.0, "employmentType": "Casual", "positionStatus": "Casual Relief Pool", "budgetStatus": "Approved Budgeted FTE"}, "POS-056": {"id": "POS-056", "title": "Warehouse Area Supervisor", "code": "FO", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-057": {"id": "POS-057", "title": "Forklift Operator", "code": "FO", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-058": {"id": "POS-058", "title": "Forklift Operator", "code": "FO", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-059": {"id": "POS-059", "title": "Forklift Operator", "code": "FO", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-060": {"id": "POS-060", "title": "Forklift Operator", "code": "FO", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-061": {"id": "POS-061", "title": "Forklift Operator", "code": "FO", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-062": {"id": "POS-062", "title": "Forklift Operator", "code": "FO", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-063": {"id": "POS-063", "title": "Forklift Operator", "code": "FO", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 0.0, "employmentType": "Casual", "positionStatus": "Casual Relief Pool", "budgetStatus": "Approved Budgeted FTE"}, "POS-064": {"id": "POS-064", "title": "Warehouse Area Supervisor", "code": "FO", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-065": {"id": "POS-065", "title": "Forklift Operator", "code": "FO", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-066": {"id": "POS-066", "title": "Forklift Operator", "code": "FO", "area": "Rocklea Warehouse Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-035", "fte": 0.0, "employmentType": "Casual", "positionStatus": "Casual Relief Pool", "budgetStatus": "Approved Budgeted FTE"}, "POS-067": {"id": "POS-067", "title": "Site Supervisor", "code": "SS", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-068": {"id": "POS-068", "title": "Site Supervisor", "code": "SS", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-069": {"id": "POS-069", "title": "Truck Driver", "code": "TD", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-070": {"id": "POS-070", "title": "Offsider", "code": "O", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-071": {"id": "POS-071", "title": "Driver Trainer", "code": "DT", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-072": {"id": "POS-072", "title": "Offsider", "code": "O", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-073": {"id": "POS-073", "title": "Offsider", "code": "O", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 0.5, "employmentType": "Part Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-074": {"id": "POS-074", "title": "Truck Driver", "code": "TD", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-075": {"id": "POS-075", "title": "Offsider", "code": "O", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-076": {"id": "POS-076", "title": "Truck Driver", "code": "TD", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-077": {"id": "POS-077", "title": "Offsider", "code": "O", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-078": {"id": "POS-078", "title": "Driver Trainer", "code": "TD", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-079": {"id": "POS-079", "title": "Offsider", "code": "O", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-080": {"id": "POS-080", "title": "Offsider", "code": "O", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-081": {"id": "POS-081", "title": "Offsider", "code": "O", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-082": {"id": "POS-082", "title": "Truck Driver", "code": "TD", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-083": {"id": "POS-083", "title": "Offsider", "code": "O", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-084": {"id": "POS-084", "title": "Driver Trainer", "code": "TD", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-085": {"id": "POS-085", "title": "Offsider", "code": "O", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-086": {"id": "POS-086", "title": "Offsider", "code": "O", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 0.5, "employmentType": "Part Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-087": {"id": "POS-087", "title": "Truck Driver", "code": "TD", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-088": {"id": "POS-088", "title": "Offsider", "code": "O", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-089": {"id": "POS-089", "title": "Offsider", "code": "O", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 0.5, "employmentType": "Part Time", "positionStatus": "Active - Vacant", "budgetStatus": "Approved Budgeted FTE"}, "POS-090": {"id": "POS-090", "title": "Truck Driver", "code": "TD", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-091": {"id": "POS-091", "title": "Offsider", "code": "O", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-092": {"id": "POS-092", "title": "Driver Trainer", "code": "TD", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-093": {"id": "POS-093", "title": "Offsider", "code": "O", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Vacant", "budgetStatus": "Approved Budgeted FTE"}, "POS-094": {"id": "POS-094", "title": "Offsider", "code": "O", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 0.5, "employmentType": "Part Time", "positionStatus": "Active - Vacant", "budgetStatus": "Approved Budgeted FTE"}, "POS-095": {"id": "POS-095", "title": "Truck Driver", "code": "TD", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 0.0, "employmentType": "Casual", "positionStatus": "Casual Relief Pool", "budgetStatus": "Approved Budgeted FTE"}, "POS-096": {"id": "POS-096", "title": "Truck Driver", "code": "TD", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 0.0, "employmentType": "Casual", "positionStatus": "Casual Relief Pool", "budgetStatus": "Approved Budgeted FTE"}, "POS-097": {"id": "POS-097", "title": "Truck Driver", "code": "TD", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 0.0, "employmentType": "Casual", "positionStatus": "Casual Relief Pool", "budgetStatus": "Approved Budgeted FTE"}, "POS-098": {"id": "POS-098", "title": "Truck Driver", "code": "TD", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 0.0, "employmentType": "Casual", "positionStatus": "Casual Relief Pool", "budgetStatus": "Approved Budgeted FTE"}, "POS-099": {"id": "POS-099", "title": "Truck Driver", "code": "TD", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 0.0, "employmentType": "Casual", "positionStatus": "Casual Relief Pool", "budgetStatus": "Approved Budgeted FTE"}, "POS-100": {"id": "POS-100", "title": "Truck Driver", "code": "TD", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 0.0, "employmentType": "Casual", "positionStatus": "Casual Relief Pool", "budgetStatus": "Approved Budgeted FTE"}, "POS-101": {"id": "POS-101", "title": "Truck Driver", "code": "TD", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 0.0, "employmentType": "Casual", "positionStatus": "Casual Relief Pool", "budgetStatus": "Approved Budgeted FTE"}, "POS-102": {"id": "POS-102", "title": "Truck Driver", "code": "TD", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 0.0, "employmentType": "Casual", "positionStatus": "Casual Relief Pool", "budgetStatus": "Approved Budgeted FTE"}, "POS-103": {"id": "POS-103", "title": "Offsider", "code": "O", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 0.0, "employmentType": "Casual", "positionStatus": "Casual Relief Pool", "budgetStatus": "Approved Budgeted FTE"}, "POS-104": {"id": "POS-104", "title": "Offsider", "code": "O", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 0.0, "employmentType": "Casual", "positionStatus": "Casual Relief Pool", "budgetStatus": "Approved Budgeted FTE"}, "POS-105": {"id": "POS-105", "title": "Offsider", "code": "O", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 0.0, "employmentType": "Casual", "positionStatus": "Casual Relief Pool", "budgetStatus": "Approved Budgeted FTE"}, "POS-106": {"id": "POS-106", "title": "Offsider", "code": "O", "area": "Rocklea Fleet Team", "department": "Operations", "location": "Rocklea", "parentId": "POS-036", "fte": 0.0, "employmentType": "Casual", "positionStatus": "Casual Relief Pool", "budgetStatus": "Approved Budgeted FTE"}, "POS-107": {"id": "POS-107", "title": "Forklift Operator", "code": "FO", "area": "Loganholme Team", "department": "Operations", "location": "Loganholme", "parentId": "POS-032", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-108": {"id": "POS-108", "title": "Forklift Operator", "code": "FO", "area": "Brendale Team", "department": "Operations", "location": "Brendale", "parentId": "POS-031", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-109": {"id": "POS-109", "title": "Assistant Store Manager", "code": "", "area": "Ormeau Team", "department": "Operations", "location": "Ormeau", "parentId": "POS-034", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-110": {"id": "POS-110", "title": "Truck Driver", "code": "TD", "area": "Ormeau Team", "department": "Operations", "location": "Ormeau", "parentId": "POS-034", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-111": {"id": "POS-111", "title": "Truck Driver", "code": "TD", "area": "Ormeau Team", "department": "Operations", "location": "Ormeau", "parentId": "POS-034", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-112": {"id": "POS-112", "title": "Truck Driver", "code": "TD", "area": "Ormeau Team", "department": "Operations", "location": "Ormeau", "parentId": "POS-034", "fte": 0.5, "employmentType": "Part Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-113": {"id": "POS-113", "title": "Driver Trainer", "code": "DT", "area": "Ormeau Team", "department": "Operations", "location": "Ormeau", "parentId": "POS-034", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-114": {"id": "POS-114", "title": "Offsider", "code": "O", "area": "Ormeau Team", "department": "Operations", "location": "Ormeau", "parentId": "POS-034", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-115": {"id": "POS-115", "title": "Offsider", "code": "O", "area": "Ormeau Team", "department": "Operations", "location": "Ormeau", "parentId": "POS-034", "fte": 0.5, "employmentType": "Part Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-116": {"id": "POS-116", "title": "Truck Driver", "code": "TD", "area": "Ormeau Team", "department": "Operations", "location": "Ormeau", "parentId": "POS-034", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-117": {"id": "POS-117", "title": "Offsider", "code": "O", "area": "Ormeau Team", "department": "Operations", "location": "Ormeau", "parentId": "POS-034", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-118": {"id": "POS-118", "title": "Offsider", "code": "O", "area": "Ormeau Team", "department": "Operations", "location": "Ormeau", "parentId": "POS-034", "fte": 0.5, "employmentType": "Part Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-119": {"id": "POS-119", "title": "Warehouse Supervisor", "code": "WS", "area": "Ormeau Team", "department": "Operations", "location": "Ormeau", "parentId": "POS-034", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-120": {"id": "POS-120", "title": "Forklift Operator", "code": "FO", "area": "Ormeau Team", "department": "Operations", "location": "Ormeau", "parentId": "POS-034", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-121": {"id": "POS-121", "title": "Forklift Operator", "code": "FO", "area": "Ormeau Team", "department": "Operations", "location": "Ormeau", "parentId": "POS-034", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-122": {"id": "POS-122", "title": "Forklift Operator", "code": "FO", "area": "Ormeau Team", "department": "Operations", "location": "Ormeau", "parentId": "POS-034", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-123": {"id": "POS-123", "title": "Forklift Operator", "code": "FO", "area": "Ormeau Team", "department": "Operations", "location": "Ormeau", "parentId": "POS-034", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-124": {"id": "POS-124", "title": "Offsider", "code": "O", "area": "Ormeau Team", "department": "Operations", "location": "Ormeau", "parentId": "POS-034", "fte": 0.5, "employmentType": "Part Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-125": {"id": "POS-125", "title": "Warehouse Supervisor", "code": "WS", "area": "North Lakes Team", "department": "Operations", "location": "North Lakes", "parentId": "POS-030", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-126": {"id": "POS-126", "title": "Forklift Operator", "code": "FO", "area": "North Lakes Team", "department": "Operations", "location": "North Lakes", "parentId": "POS-030", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-127": {"id": "POS-127", "title": "Forklift Operator", "code": "FO", "area": "North Lakes Team", "department": "Operations", "location": "North Lakes", "parentId": "POS-030", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-128": {"id": "POS-128", "title": "Forklift Operator", "code": "FO", "area": "North Lakes Team", "department": "Operations", "location": "North Lakes", "parentId": "POS-030", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-129": {"id": "POS-129", "title": "Forklift Operator", "code": "FO", "area": "North Lakes Team", "department": "Operations", "location": "North Lakes", "parentId": "POS-030", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-130": {"id": "POS-130", "title": "Forklift Operator", "code": "FO", "area": "North Lakes Team", "department": "Operations", "location": "North Lakes", "parentId": "POS-030", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-131": {"id": "POS-131", "title": "Forklift Operator", "code": "FO", "area": "North Lakes Team", "department": "Operations", "location": "North Lakes", "parentId": "POS-030", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-132": {"id": "POS-132", "title": "Driver Trainer", "code": "DT", "area": "North Lakes Team", "department": "Operations", "location": "North Lakes", "parentId": "POS-030", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-133": {"id": "POS-133", "title": "Offsider", "code": "O", "area": "North Lakes Team", "department": "Operations", "location": "North Lakes", "parentId": "POS-030", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-134": {"id": "POS-134", "title": "Truck Driver", "code": "TD", "area": "North Lakes Team", "department": "Operations", "location": "North Lakes", "parentId": "POS-030", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-135": {"id": "POS-135", "title": "Offsider", "code": "O", "area": "North Lakes Team", "department": "Operations", "location": "North Lakes", "parentId": "POS-030", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-136": {"id": "POS-136", "title": "Truck Driver", "code": "TD", "area": "North Lakes Team", "department": "Operations", "location": "North Lakes", "parentId": "POS-030", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-137": {"id": "POS-137", "title": "Truck Driver", "code": "TD", "area": "North Lakes Team", "department": "Operations", "location": "North Lakes", "parentId": "POS-030", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-138": {"id": "POS-138", "title": "Truck Driver", "code": "TD", "area": "North Lakes Team", "department": "Operations", "location": "North Lakes", "parentId": "POS-030", "fte": 1.0, "employmentType": "Full Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-139": {"id": "POS-139", "title": "Truck Driver", "code": "TD", "area": "North Lakes Team", "department": "Operations", "location": "North Lakes", "parentId": "POS-030", "fte": 0.5, "employmentType": "Part Time", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}, "POS-140": {"id": "POS-140", "title": "Offsider", "code": "O", "area": "North Lakes Team", "department": "Operations", "location": "North Lakes", "parentId": "POS-030", "fte": 0.0, "employmentType": "Casual", "positionStatus": "Active - Filled", "budgetStatus": "Approved Budgeted FTE"}};
   const DEPARTMENTS = ["Corporate Services", "Executive", "Finance", "Operations", "People & Safety", "Sales"];
-  const STORAGE_KEY = 'bb-rocklea-fleet-local-v1';
+  const STORAGE_KEY = 'bb-rocklea-fleet-local-v30-empty';
   const ROCKLEA_DPM_ID = 'POS-036';
   const ROCKLEA_DPM_LABEL = 'Delivery Performance Manager';
   const SEED_ROLE_DETAILS = {"POS-001": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-002": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-003": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-004": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-005": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-006": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-007": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-008": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-009": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-010": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-011": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-012": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-013": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-014": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-015": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-016": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-017": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-018": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-019": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-020": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-021": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-022": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-023": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-024": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-025": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-026": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-027": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-028": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-029": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-030": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-031": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-032": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-033": {"approvedFTE": 1.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-034": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-035": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-036": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-037": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-038": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-039": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-040": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-041": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-042": {"approvedFTE": 0.5, "establishmentType": "Standard", "approvedEmploymentType": "Part Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-043": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-044": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-045": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-046": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-047": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-048": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-049": {"approvedFTE": 0.5, "establishmentType": "Standard", "approvedEmploymentType": "Part Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-050": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-051": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-052": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-053": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-054": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-055": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-056": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-057": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-058": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-059": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-060": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-061": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-062": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-063": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-064": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-065": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-066": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-067": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-068": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-069": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-070": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-071": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-072": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-073": {"approvedFTE": 0.5, "establishmentType": "Standard", "approvedEmploymentType": "Part Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-074": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-075": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-076": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-077": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-078": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-079": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-080": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-081": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-082": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-083": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-084": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-085": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-086": {"approvedFTE": 0.5, "establishmentType": "Standard", "approvedEmploymentType": "Part Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-087": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-088": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-089": {"approvedFTE": 0.5, "establishmentType": "Standard", "approvedEmploymentType": "Part Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-090": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-091": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-092": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-093": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-094": {"approvedFTE": 0.5, "establishmentType": "Standard", "approvedEmploymentType": "Part Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-095": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-096": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-097": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-098": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-099": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-100": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-101": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-102": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-103": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-104": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-105": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-106": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-107": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-108": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-109": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-110": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-111": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-112": {"approvedFTE": 0.5, "establishmentType": "Standard", "approvedEmploymentType": "Part Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-113": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-114": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-115": {"approvedFTE": 0.5, "establishmentType": "Standard", "approvedEmploymentType": "Part Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-116": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-117": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-118": {"approvedFTE": 0.5, "establishmentType": "Standard", "approvedEmploymentType": "Part Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-119": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-120": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-121": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-122": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-123": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-124": {"approvedFTE": 0.5, "establishmentType": "Standard", "approvedEmploymentType": "Part Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-125": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-126": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-127": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-128": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-129": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-130": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-131": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-132": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-133": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-134": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-135": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-136": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-137": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-138": {"approvedFTE": 1.0, "establishmentType": "Standard", "approvedEmploymentType": "Full Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-139": {"approvedFTE": 0.5, "establishmentType": "Standard", "approvedEmploymentType": "Part Time", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}, "POS-140": {"approvedFTE": 0.0, "establishmentType": "Cover", "approvedEmploymentType": "Casual", "budgetStatus": "Approved Budgeted FTE", "labourHire": "No", "labourHireProvider": ""}};
@@ -8423,12 +8891,52 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
     if(!warning || !p) return mismatch;
     if(actualRole && mismatch){
       warning.hidden=false;
-      warning.innerHTML=`<strong>ROLE MISMATCH:</strong> this position is <strong>${escapeHtml(p.title)}</strong>, but the person is recorded as <strong>${escapeHtml(actualRole)}</strong>. You can still save the assignment; the position card will be flagged red.`;
+      warning.innerHTML=`<strong>ROLE MISMATCH:</strong> this position is <strong>${escapeHtml(p.title)}</strong>, but the person is recorded as <strong>${escapeHtml(actualRole)}</strong>. You can still save the assignment; a ROLE MISMATCH flag will be shown.`;
     }else{
       warning.hidden=true;
       warning.textContent='';
     }
     return mismatch;
+  }
+
+  function updateAvailabilityFieldsV22(){
+    const select=document.getElementById('assignmentFullAvailability');
+    const fields=document.getElementById('limitedAvailabilityFieldsV22');
+    if(!select || !fields) return;
+    const limited=select.value==='No';
+    fields.hidden=!limited;
+    const days=document.getElementById('assignmentAvailabilityDays');
+    const hours=document.getElementById('assignmentAvailabilityHours');
+    if(days) days.required=limited;
+    if(hours) hours.required=limited;
+    if(!limited){
+      if(days) days.value='';
+      if(hours) hours.value='';
+      const details=document.getElementById('assignmentAvailabilityDetails');
+      if(details) details.value='';
+    }
+  }
+
+  function hasLimitedAvailabilityV22(a){
+    return !!(a && String(a.personName||'').trim() && a.fullAvailability===false);
+  }
+
+  function limitedAvailabilityLabelV22(a){
+    if(!hasLimitedAvailabilityV22(a)) return '';
+    const hours=Number(a.availabilityHoursPerWeek);
+    return Number.isFinite(hours) && hours>0
+      ? `LIMITED AVAILABILITY · ${hours % 1 === 0 ? hours.toFixed(0) : hours.toFixed(1)} HRS/WK`
+      : 'LIMITED AVAILABILITY';
+  }
+
+  function limitedAvailabilityTitleV22(a){
+    if(!hasLimitedAvailabilityV22(a)) return '';
+    const parts=['Limited availability'];
+    if(a.availabilityDays) parts.push(`Days: ${a.availabilityDays}`);
+    const hours=Number(a.availabilityHoursPerWeek);
+    if(Number.isFinite(hours) && hours>0) parts.push(`${hours} hours/week`);
+    if(a.availabilityDetails) parts.push(a.availabilityDetails);
+    return parts.join(' · ');
   }
 
   function openModal(id) { document.getElementById(id).hidden = false; }
@@ -8443,8 +8951,13 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
       const a = state.assignments[id];
       const d = state.roleDetails[id] || SEED_ROLE_DETAILS[id] || {};
       const mismatch = !!(a && String(a.personName || '').trim() && String(a.actualRole || '').trim() && roleMismatchFor(id,a.actualRole));
+      const limitedAvailabilityV22 = hasLimitedAvailabilityV22(a);
       card.classList.toggle('role-mismatch',mismatch);
-      card.title = mismatch ? `Role mismatch: position is ${(POSITIONS[id]||{}).title || 'this role'}; ${a.personName} is recorded as ${a.actualRole}.` : '';
+      card.classList.toggle('limited-availability-v22',limitedAvailabilityV22);
+      const titlePartsV22=[];
+      if(mismatch) titlePartsV22.push(`Role mismatch: position is ${(POSITIONS[id]||{}).title || 'this role'}; ${a.personName} is recorded as ${a.actualRole}.`);
+      if(limitedAvailabilityV22) titlePartsV22.push(limitedAvailabilityTitleV22(a));
+      card.title = titlePartsV22.join(' ');
 
       const fte = card.querySelector('.role-fte-v46');
       if(fte){
@@ -8462,6 +8975,20 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
       card.classList.toggle('employment-full-time-v18', employmentTypeV18 === 'full time' || employmentTypeV18 === 'full-time');
       card.classList.toggle('employment-casual-v18', isCasualV18);
       card.classList.toggle('outside-approved-budget',outsideBudget);
+
+      // V25: mirror the legend colour on the assigned-person/status line.
+      const personStatusClassesV25=[
+        'person-status-assigned-v25','person-status-vacant-v25','person-status-casual-v25',
+        'person-status-labour-v25','person-status-limited-v25','person-status-outside-v25','person-status-mismatch-v25'
+      ];
+      card.classList.remove(...personStatusClassesV25);
+      const isLabourHireV25=d.labourHire==='Yes' || String(a?.workerType || '').toLowerCase()==='labour hire';
+      let personStatusClassV25='person-status-assigned-v25';
+      if(!isAssigned) personStatusClassV25='person-status-vacant-v25';
+      else if(isLabourHireV25) personStatusClassV25='person-status-labour-v25';
+      else if(limitedAvailabilityV22) personStatusClassV25='person-status-limited-v25';
+      else if(isCasualV18) personStatusClassV25='person-status-casual-v25';
+      card.classList.add(personStatusClassV25);
 
       // Occupancy/status controls the card treatment. Employment type is applied separately
       // so a vacant Part Time role still carries the dark-blue Part Time badge.
@@ -8486,6 +9013,14 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
           mismatchPill.className='role-mismatch-pill-v46';
           mismatchPill.textContent=`Role mismatch · ${a.actualRole}`;
           dynamic.appendChild(mismatchPill);
+        }
+
+        if(limitedAvailabilityV22){
+          const availabilityPill=document.createElement('span');
+          availabilityPill.className='limited-availability-pill-v22';
+          availabilityPill.textContent=limitedAvailabilityLabelV22(a);
+          availabilityPill.title=limitedAvailabilityTitleV22(a);
+          dynamic.appendChild(availabilityPill);
         }
 
         const worker = document.createElement('span');
@@ -8528,9 +9063,14 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
       const d=state.roleDetails[id] || SEED_ROLE_DETAILS[id] || {};
       const a=state.assignments[id];
       const mismatch=!!(a && String(a.personName || '').trim() && String(a.actualRole || '').trim() && roleMismatchFor(id,a.actualRole));
+      const limitedAvailabilityV22=hasLimitedAvailabilityV22(a);
       card.classList.toggle('role-mismatch',mismatch);
-      card.title=mismatch ? `Role mismatch: position is ${p.title || 'this role'}; ${a.personName} is recorded as ${a.actualRole}.` : '';
-      card.querySelectorAll('.role-mismatch-pill-v46').forEach(el=>el.remove());
+      card.classList.toggle('limited-availability-v22',limitedAvailabilityV22);
+      const titlePartsV22=[];
+      if(mismatch) titlePartsV22.push(`Role mismatch: position is ${p.title || 'this role'}; ${a.personName} is recorded as ${a.actualRole}.`);
+      if(limitedAvailabilityV22) titlePartsV22.push(limitedAvailabilityTitleV22(a));
+      card.title=titlePartsV22.join(' ');
+      card.querySelectorAll('.role-mismatch-pill-v46,.limited-availability-pill-v22').forEach(el=>el.remove());
 
       const title=card.querySelector('.approved-site-title-v47');
       if(title) title.textContent=p.title || title.textContent;
@@ -8553,10 +9093,29 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
       card.classList.toggle('is-valid-assigned',isAssigned && !mismatch && !outsideBudget);
       card.classList.toggle('is-vacant-approved',!isAssigned && !outsideBudget);
       card.classList.toggle('outside-approved-budget',outsideBudget);
-      card.classList.toggle('is-labour-hire',d.labourHire==='Yes');
+      const isLabourHireV25=d.labourHire==='Yes' || String(a?.workerType || '').toLowerCase()==='labour hire';
+      card.classList.toggle('is-labour-hire',isLabourHireV25);
+
+      const sitePersonStatusClassesV25=[
+        'person-status-assigned-v25','person-status-vacant-v25','person-status-casual-v25',
+        'person-status-labour-v25','person-status-limited-v25','person-status-outside-v25','person-status-mismatch-v25'
+      ];
+      card.classList.remove(...sitePersonStatusClassesV25);
+      const siteEmploymentTypeV25=String(d.approvedEmploymentType || p.employmentType || '').trim().toLowerCase();
+      const siteCasualV25=siteEmploymentTypeV25==='casual';
+      let sitePersonStatusClassV25='person-status-assigned-v25';
+      if(!isAssigned) sitePersonStatusClassV25='person-status-vacant-v25';
+      else if(isLabourHireV25) sitePersonStatusClassV25='person-status-labour-v25';
+      else if(limitedAvailabilityV22) sitePersonStatusClassV25='person-status-limited-v25';
+      else if(siteCasualV25) sitePersonStatusClassV25='person-status-casual-v25';
+      card.classList.add(sitePersonStatusClassV25);
+      card.classList.remove('employment-part-time-v18','employment-full-time-v18','employment-casual-v18');
+      card.classList.toggle('employment-part-time-v18',siteEmploymentTypeV25==='part time'||siteEmploymentTypeV25==='part-time');
+      card.classList.toggle('employment-full-time-v18',siteEmploymentTypeV25==='full time'||siteEmploymentTypeV25==='full-time');
+      card.classList.toggle('employment-casual-v18',siteCasualV25);
 
       if(person){
-        const prefix=d.labourHire==='Yes' ? 'LH · ' : '';
+        const prefix=isLabourHireV25 ? 'LH · ' : '';
         person.textContent=isAssigned ? prefix+a.personName : 'OPEN POSITION';
         person.title=person.textContent;
       }
@@ -8565,6 +9124,13 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
         mismatchPill.className='role-mismatch-pill-v46';
         mismatchPill.textContent='Role mismatch';
         card.appendChild(mismatchPill);
+      }
+      if(limitedAvailabilityV22){
+        const availabilityPill=document.createElement('span');
+        availabilityPill.className='limited-availability-pill-v22';
+        availabilityPill.textContent=limitedAvailabilityLabelV22(a);
+        availabilityPill.title=limitedAvailabilityTitleV22(a);
+        card.appendChild(availabilityPill);
       }
     });
   }
@@ -8678,8 +9244,13 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
 
     document.getElementById('assignmentPersonName').value = current.personName || '';
     document.getElementById('assignmentEmployeeId').value = current.employeeId || '';
-    document.getElementById('assignmentEmployeeEmail').value = current.employeeEmail || '';
     document.getElementById('assignmentActualRole').value = current.actualRole || '';
+    document.getElementById('assignmentHourlyRate').value = ''; // Sensitive: never load or persist rate in the browser.
+    document.getElementById('assignmentFullAvailability').value = current.fullAvailability === false ? 'No' : 'Yes';
+    document.getElementById('assignmentAvailabilityDays').value = current.availabilityDays || '';
+    document.getElementById('assignmentAvailabilityHours').value = current.availabilityHoursPerWeek ?? '';
+    document.getElementById('assignmentAvailabilityDetails').value = current.availabilityDetails || '';
+    updateAvailabilityFieldsV22();
 
     document.getElementById('assignmentApprovedFTE').value = Number(d.approvedFTE ?? 0);
     document.getElementById('assignmentEstablishmentType').value = d.establishmentType || 'Standard';
@@ -8717,6 +9288,7 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
   });
 
   document.getElementById('assignmentLabourHire').addEventListener('change', updateLabourHireProviderVisibility);
+  document.getElementById('assignmentFullAvailability').addEventListener('change', updateAvailabilityFieldsV22);
   document.getElementById('assignmentActualRole').addEventListener('input', updateAssignmentRoleMismatchPreview);
   document.getElementById('assignmentActualRole').addEventListener('change', updateAssignmentRoleMismatchPreview);
 
@@ -8725,8 +9297,14 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
     const id = document.getElementById('assignmentPositionId').value;
     const personName = document.getElementById('assignmentPersonName').value.trim();
     const employeeId = document.getElementById('assignmentEmployeeId').value.trim();
-    const employeeEmail = document.getElementById('assignmentEmployeeEmail').value.trim();
     const actualRole = document.getElementById('assignmentActualRole').value.trim();
+    const fullAvailability = document.getElementById('assignmentFullAvailability').value === 'Yes';
+    const availabilityDays = fullAvailability ? '' : document.getElementById('assignmentAvailabilityDays').value.trim();
+    const availabilityHoursRaw = fullAvailability ? '' : document.getElementById('assignmentAvailabilityHours').value;
+    const availabilityHoursPerWeek = fullAvailability ? null : Number(availabilityHoursRaw);
+    const availabilityDetails = fullAvailability ? '' : document.getElementById('assignmentAvailabilityDetails').value.trim();
+    const hourlyRateRaw = document.getElementById('assignmentHourlyRate').value.trim();
+    const hourlyRate = hourlyRateRaw === '' ? null : Number(hourlyRateRaw);
 
     const approvedFTE = Number(document.getElementById('assignmentApprovedFTE').value);
     const establishmentType = document.getElementById('assignmentEstablishmentType').value;
@@ -8738,6 +9316,11 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
     const labourHire = document.getElementById('assignmentLabourHire').value;
     const labourHireProvider = document.getElementById('assignmentLabourHireProvider').value;
 
+    if(hourlyRate !== null && (!Number.isFinite(hourlyRate) || hourlyRate <= 0)){
+      document.getElementById('assignmentHourlyRate').focus();
+      toast('Enter a valid hourly labour rate greater than $0, or leave it blank.');
+      return;
+    }
     if(!Number.isFinite(approvedFTE) || approvedFTE < 0){
       document.getElementById('assignmentApprovedFTE').focus();
       return;
@@ -8752,14 +9335,21 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
       toast("Enter the person's actual role so mismatches can be flagged.");
       return;
     }
+    if(!fullAvailability){
+      if(!availabilityDays){
+        document.getElementById('assignmentAvailabilityDays').focus();
+        toast('Enter the days this person is available.');
+        return;
+      }
+      if(!Number.isFinite(availabilityHoursPerWeek) || availabilityHoursPerWeek <= 0){
+        document.getElementById('assignmentAvailabilityHours').focus();
+        toast("Enter the person\'s available hours per week.");
+        return;
+      }
+    }
     const roleMismatch = roleMismatchFor(id,actualRole);
     if(labourHire === 'Yes' && !labourHireProvider){
       document.getElementById('assignmentLabourHireProvider').focus();
-      return;
-    }
-    if(labourHire !== 'Yes' && !employeeEmail){
-      document.getElementById('assignmentEmployeeEmail').focus();
-      toast('Employee email is required for a direct employee.');
       return;
     }
 
@@ -8772,14 +9362,20 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
           action:'updatePositionAssignment',
           PositionID:id,
           EmployeeName: labourHire === 'Yes' ? null : personName,
-          EmployeeEmail: labourHire === 'Yes' ? null : employeeEmail,
           EmployeeID: employeeId || null,
           LabourHire: labourHire === 'Yes',
           LabourHireProvider: labourHire === 'Yes' ? labourHireProvider : null,
           LabourHireWorkerName: labourHire === 'Yes' ? personName : null,
           Status:'Active',
           ChartVisible:true,
-          BudgetStatus: budgetStatus
+          BudgetStatus: budgetStatus,
+          FullAvailability: fullAvailability,
+          AvailabilityDays: fullAvailability ? null : availabilityDays,
+          AvailabilityHoursPerWeek: fullAvailability ? null : availabilityHoursPerWeek,
+          AvailabilityDetails: fullAvailability ? null : availabilityDetails,
+          HourlyRate: hourlyRate === null ? undefined : hourlyRate,
+          HourlyRateCurrency: hourlyRate === null ? undefined : 'AUD',
+          HourlyRateUnit: hourlyRate === null ? undefined : 'Hour'
         });
       }
     }catch(err){
@@ -8789,8 +9385,12 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
 
     if(personName){
       state.assignments[id] = {
-        personName, employeeId, employeeEmail, actualRole,
+        personName, employeeId, actualRole,
         roleMismatch,
+        fullAvailability,
+        availabilityDays: fullAvailability ? '' : availabilityDays,
+        availabilityHoursPerWeek: fullAvailability ? null : availabilityHoursPerWeek,
+        availabilityDetails: fullAvailability ? '' : availabilityDetails,
         workerType: labourHire === 'Yes' ? 'Labour Hire' : 'Direct',
         labourHireProvider: labourHire === 'Yes' ? labourHireProvider : '',
         approvedFTE, establishmentType, approvedEmploymentType, budgetStatus,
@@ -8842,7 +9442,15 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
     if(beforePerson !== afterPerson) changes.push(`Person: ${beforePerson || 'Vacant'} → ${afterPerson || 'Vacant'}`);
     const beforeActualRole = previousAssignment.actualRole || '';
     if(beforeActualRole !== actualRole) changes.push(`Person actual role: ${beforeActualRole || '—'} → ${actualRole || '—'}`);
+    const beforeFullAvailability = previousAssignment.fullAvailability !== false;
+    if(beforeFullAvailability !== fullAvailability) changes.push(`Full availability: ${beforeFullAvailability ? 'Yes' : 'No'} → ${fullAvailability ? 'Yes' : 'No'}`);
+    if(!fullAvailability){
+      if(String(previousAssignment.availabilityDays || '') !== availabilityDays) changes.push(`Available days: ${previousAssignment.availabilityDays || '—'} → ${availabilityDays}`);
+      if(Number(previousAssignment.availabilityHoursPerWeek || 0) !== Number(availabilityHoursPerWeek || 0)) changes.push(`Available hours/week: ${previousAssignment.availabilityHoursPerWeek || '—'} → ${availabilityHoursPerWeek}`);
+      if(String(previousAssignment.availabilityDetails || '') !== availabilityDetails) changes.push(`Availability details: ${previousAssignment.availabilityDetails || '—'} → ${availabilityDetails || '—'}`);
+    }
     if(roleMismatch) changes.push(`ROLE MISMATCH: position ${((positionMeta(id)||{}).title || id)} vs person role ${actualRole}`);
+    if(!fullAvailability) changes.push(`LIMITED AVAILABILITY: ${availabilityDays}; ${availabilityHoursPerWeek} hrs/week${availabilityDetails ? '; '+availabilityDetails : ''}`);
 
     if(!state.history[id]) state.history[id] = [];
     state.history[id].push({
@@ -8860,7 +9468,7 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
     renderAdditionalRoles();
     if(window.BB_RENDER_ADDED_TRUCKS_V15) window.BB_RENDER_ADDED_TRUCKS_V15();
     closeModal('assignmentModal');
-    toast(roleMismatch ? 'Assignment saved and flagged red for role mismatch.' : (personName ? 'Position and person assignment saved.' : 'Position saved and role left vacant.'));
+    toast(roleMismatch && !fullAvailability ? 'Assignment saved with role mismatch and limited availability flags.' : (roleMismatch ? 'Assignment saved with a Role Mismatch flag.' : (!fullAvailability ? 'Assignment saved and flagged for limited availability.' : (personName ? 'Position and person assignment saved.' : 'Position saved and role left vacant.'))));
   });
   document.getElementById('clearAssignmentBtn').addEventListener('click', async () => {
     if(window.BB_REQUIRE_EDITOR && !window.BB_REQUIRE_EDITOR()) return;
@@ -8876,13 +9484,17 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
           action:'updatePositionAssignment',
           PositionID:id,
           EmployeeName:null,
-          EmployeeEmail:null,
           EmployeeID:null,
           LabourHire:false,
           LabourHireProvider:null,
           LabourHireWorkerName:null,
           Status: outsideBudget ? 'Inactive - Vacant' : 'Vacant',
           ChartVisible: !outsideBudget,
+          FullAvailability:null,
+          AvailabilityDays:null,
+          AvailabilityHoursPerWeek:null,
+          AvailabilityDetails:null,
+          HourlyRate:null,
           BudgetStatus: d.budgetStatus || 'Approved Budgeted FTE'
         });
       }
@@ -9134,10 +9746,15 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
       r.chartStatus='Visible - Assigned';
 
       const mismatch=!!(assigned && String(assigned.personName || '').trim() && String(assigned.actualRole || '').trim() && roleMismatchFor(r.generatedPositionId,assigned.actualRole));
+      const limitedDynamicV28=hasLimitedAvailabilityV22(assigned);
+      const labourDynamicV28=d.labourHire==='Yes' || String(assigned?.workerType || '').toLowerCase()==='labour hire';
+      const employmentDynamicV28=String(d.approvedEmploymentType||'').trim().toLowerCase();
+      const statusDynamicV28=labourDynamicV28?'person-status-labour-v25':(limitedDynamicV28?'person-status-limited-v25':(employmentDynamicV28==='casual'?'person-status-casual-v25':'person-status-assigned-v25'));
+      const employmentClassDynamicV28=employmentDynamicV28==='part time'||employmentDynamicV28==='part-time'?'employment-part-time-v18':(employmentDynamicV28==='casual'?'employment-casual-v18':'employment-full-time-v18');
       const groupLabel=backupGroup==='offsider' ? 'Back Up Offsider' : 'Back Up Driver';
       const code=backupGroup==='offsider' ? 'O' : 'TD';
       const card=document.createElement('div');
-      card.className='role-card-v46 type-casual outside-approved-budget'+(mismatch?' role-mismatch':'');
+      card.className='role-card-v46 type-casual outside-approved-budget '+employmentClassDynamicV28+' '+statusDynamicV28+(labourDynamicV28?' is-labour-hire':'')+(mismatch?' role-mismatch':'');
       card.dataset.dynamicRoleId=r.generatedPositionId;
       card.dataset.positionArea='Rocklea Fleet Team';
       card.setAttribute('role','button');
@@ -9156,6 +9773,7 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
           <div class="role-tags-v46"><span class="role-tag-v46 cover">Cover / Relief</span><span class="role-tag-v46 group">${groupLabel}</span></div>
           <div class="role-dynamic-v46">
             ${mismatch?`<span class="role-mismatch-pill-v46">Role mismatch · ${escapeHtml(assigned.actualRole || '')}</span>`:''}
+            ${hasLimitedAvailabilityV22(assigned)?`<span class="limited-availability-pill-v22" title="${escapeHtml(limitedAvailabilityTitleV22(assigned))}">${escapeHtml(limitedAvailabilityLabelV22(assigned))}</span>`:''}
             <span class="outside-budget-pill-v46">OUTSIDE APPROVED BUDGET</span>
             <span class="role-worker-v46 ${d.labourHire==='Yes'?'labour':'direct'}">${d.labourHire==='Yes'?'Labour Hire':'Direct'}</span>
             ${d.labourHire==='Yes'&&d.labourHireProvider?`<span class="role-provider-v46">${escapeHtml(d.labourHireProvider)}</span>`:''}
@@ -9205,8 +9823,11 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
     return {
       personName:a.personName || '',
       employeeId:a.employeeId || '',
-      employeeEmail:a.employeeEmail || '',
       actualRole:a.actualRole || '',
+      fullAvailability:a.fullAvailability !== false,
+      availabilityDays:a.availabilityDays || '',
+      availabilityHoursPerWeek:a.availabilityHoursPerWeek ?? null,
+      availabilityDetails:a.availabilityDetails || '',
       workerType:a.workerType || (d.labourHire==='Yes'?'Labour Hire':'Direct'),
       labourHire:d.labourHire==='Yes'?'Yes':'No',
       labourHireProvider:d.labourHire==='Yes'?(d.labourHireProvider || a.labourHireProvider || ''):''
@@ -9224,9 +9845,12 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
     state.assignments[id]={
       personName:profile.personName || '',
       employeeId:profile.employeeId || '',
-      employeeEmail:profile.employeeEmail || '',
       actualRole:profile.actualRole || '',
       roleMismatch:mismatch,
+      fullAvailability:profile.fullAvailability !== false,
+      availabilityDays:profile.fullAvailability === false ? (profile.availabilityDays || '') : '',
+      availabilityHoursPerWeek:profile.fullAvailability === false ? (profile.availabilityHoursPerWeek ?? null) : null,
+      availabilityDetails:profile.fullAvailability === false ? (profile.availabilityDetails || '') : '',
       workerType:profile.labourHire==='Yes'?'Labour Hire':'Direct',
       labourHireProvider:profile.labourHire==='Yes'?(profile.labourHireProvider || ''):'',
       approvedFTE:d.approvedFTE,
@@ -9289,8 +9913,22 @@ body.bb-editor-enabled #area-rocklea-fleet-team #backupOffsiderSection .backup-a
     if(!sourceProfile){toast('Only a filled position can be dragged.');return;}
     const targetProfile=workerProfileV11(targetId);
 
-    // No external write is called here in this disconnected build. When the new
-    // Microsoft List is connected, this move can be mapped as two position updates.
+    // When connected, perform the move/swap server-side as well. This lets sensitive
+    // fields such as HourlyRate move with the person without ever being loaded into
+    // browser state or exposed in the org chart payload.
+    try{
+      if(window.BB_MS_LIST){
+        await window.BB_MS_LIST.write({
+          action:'moveOrSwapAssignment',
+          SourcePositionID:sourceId,
+          TargetPositionID:targetId,
+          Swap:!!targetProfile
+        });
+      }
+    }catch(err){
+      toast(err.message || 'External assignment move failed.');
+      return;
+    }
     setPersonAtPositionV11(targetId,sourceProfile);
     setPersonAtPositionV11(sourceId,targetProfile);
     syncOutsideBudgetVisibilityV11(sourceId);
@@ -10757,7 +11395,7 @@ window.BB_MANAGEMENT_COLOUR_RULE = 'green-only-when-valid-assigned';
 </script><script id="bb-v58-vacancy-status">window.BB_VACANCY_SYNC_ENABLED = true;</script><script id="bb-v59-history-clear-marker">window.BB_CLEAR_POSITION_HISTORY_ENABLED = true;</script><script id="bb-v61-editor-security">
 (() => {
   const EXPECTED_EMAIL = 'hazel.valencia@betaboard.com.au';
-  const EDITOR_ROLE = 'orgchart_editor';
+  const EDITOR_ROLE = 'rocklea_fleet_editor';
 
   window.BB_CAN_EDIT = false;
   window.BB_AUTH_READY = false;
@@ -10817,7 +11455,7 @@ window.BB_MANAGEMENT_COLOUR_RULE = 'green-only-when-valid-assigned';
     if (window.BB_CAN_EDIT) return true;
     const toast = document.getElementById('orgToast');
     if (toast) {
-      toast.textContent = 'View-only access. You do not have permission to make changes.';
+      toast.textContent = 'Restricted access. You do not have the Rocklea Fleet editor role.';
       toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 3200);
     }
@@ -10847,11 +11485,11 @@ window.BB_MANAGEMENT_COLOUR_RULE = 'green-only-when-valid-assigned';
       const principal = data && data.clientPrincipal ? data.clientPrincipal : null;
       const roles = principal && Array.isArray(principal.userRoles) ? principal.userRoles : [];
       const hasRole = roles.includes(EDITOR_ROLE);
-      const correctUser = identityMatches(principal);
 
-      // Rocklea Fleet editor access is tied directly to Hazel's signed-in BetaBoard identity.
-      // The legacy custom orgchart_editor role is no longer required for this standalone tool.
-      setAccessMode(correctUser, principal);
+      // Secure production mode: only users explicitly assigned the
+      // rocklea_fleet_editor role through Azure Static Web Apps Role Management
+      // can access editing controls. The normal site link alone grants no access.
+      setAccessMode(hasRole, principal);
     } catch (err) {
       console.warn('Editor access check failed:', err);
       // Allow editing when the standalone HTML is being previewed outside Azure.
@@ -10999,7 +11637,7 @@ body.bb-editor-enabled #area-rocklea-fleet-team .cluster-add-truck-btn-v15{displ
 </style>
 <script id="bb-v15-add-truck-controls">
 (() => {
-  const STORAGE_KEY_V15='bb-rocklea-fleet-local-v1';
+  const STORAGE_KEY_V15='bb-rocklea-fleet-local-v30-empty';
   const CLUSTERS_V15=['CLUSTER A','CLUSTER B','CLUSTER C','CLUSTER D','CLUSTER E'];
   let addTruckContextV15=null;
 
@@ -11333,7 +11971,7 @@ body.bb-view-only #area-rocklea-fleet-team .custom-truck-actions-v17{display:non
 </style>
 <script id="bb-v17-custom-truck-position-controls">
 (() => {
-  const STORAGE_KEY='bb-rocklea-fleet-local-v1';
+  const STORAGE_KEY='bb-rocklea-fleet-local-v30-empty';
   let addPositionVehicleId='';
   let deleteVehicleId='';
 
@@ -11555,5 +12193,12 @@ body.bb-view-only #area-rocklea-fleet-team .custom-truck-actions-v17{display:non
 })();
 </script>
 
+
+<script id="bb-v24-no-employee-email">
+// v24: Employee email removed from assignment UI, local state and Microsoft List save payload.
+window.BB_VERSION = '24';
+</script>
 </body>
 </html>
+
+<!-- V22: Full / limited availability capture and chart flag -->
