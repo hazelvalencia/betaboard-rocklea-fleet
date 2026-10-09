@@ -1,3 +1,17 @@
 {
-  "navigationFallback": {"rewrite": "/index.html"}
+  "routes": [
+    {
+      "route": "/*",
+      "allowedRoles": [
+        "rocklea_fleet_viewer",
+        "rocklea_fleet_editor"
+      ]
+    }
+  ],
+  "responseOverrides": {
+    "401": {
+      "redirect": "/.auth/login/aad",
+      "statusCode": 302
+    }
+  }
 }
